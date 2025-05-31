@@ -7,13 +7,15 @@ model:
   credentials:
     aws_access_key_id: ${AWS_ACCESS_KEY_ID}
     aws_secret_access_key: ${AWS_SECRET_ACCESS_KEY}
-
 include:
-  - src/
-  - test-codebase/
+  - .
 exclude:
-  - test-codebase/functions/
-
+  - ".venv/*"
+  - "test-codebase/*"
+  - "**/__pycache__/"
+  - "**/*.pyc"
+  - "**/*.egg-info/"
+  - "**/.pytest_cache/"
 score_threshold: 80
 
 
@@ -25,13 +27,15 @@ score_threshold: 80
 #   credentials:
 #     aws_access_key_id: ${AWS_ACCESS_KEY_ID}
 #     aws_secret_access_key: ${AWS_SECRET_ACCESS_KEY}
-
 # include:
-#   - src/
-#   - test-codebase/
+#   - .
 # exclude:
-#   - test-codebase/functions/
-
+#   - ".venv/*"
+#   - "test-codebase/*"
+#   - "**/__pycache__/"
+#   - "**/*.pyc"
+#   - "**/*.egg-info/"
+#   - "**/.pytest_cache/"
 # score_threshold: 80
 
 
@@ -42,13 +46,15 @@ score_threshold: 80
 #   credentials:
 #     api_key: ${DEEPSEEK_API_KEY}
 #     api_base: https://api.deepseek.com/v1
-
 # include:
-#   - src/
-#   - test-codebase/
+#   - .
 # exclude:
-#   - test-codebase/functions/
-
+#   - ".venv/*"
+#   - "test-codebase/*"
+#   - "**/__pycache__/"
+#   - "**/*.pyc"
+#   - "**/*.egg-info/"
+#   - "**/.pytest_cache/"
 # score_threshold: 80
 
 
@@ -60,12 +66,14 @@ score_threshold: 80
 #   credentials:
 #     aws_access_key_id: ${AWS_ACCESS_KEY_ID}
 #     aws_secret_access_key: ${AWS_SECRET_ACCESS_KEY}
-
 # include:
-#   - src/
-#   - test-codebase/
+#   - .
 # exclude:
-#   - test-codebase/functions/
-
+#   - ".venv/*"
+#   - "test-codebase/*"
+#   - "**/__pycache__/"
+#   - "**/*.pyc"
+#   - "**/*.egg-info/"
+#   - "**/.pytest_cache/"
 # score_threshold: 80
 

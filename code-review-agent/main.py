@@ -3,7 +3,6 @@
 import os
 import json
 import glob
-from langchain.output_parsers import RegexParser
 from agents.review_agent import ReviewAgent
 from core.models import get_model_instance
 from utils.config_loader import load_config
@@ -64,13 +63,17 @@ def main():
 
     includes = config.get("include", [])
     excludes = config.get("exclude", [])
-
+    
     structure = get_file_structure(root_dir, includes, excludes)
 
     code_files = load_codebase(
         includes=[os.path.join(root_dir, path) for path in includes],
         excludes=[os.path.join(root_dir, path) for path in excludes]
     )
+
+    for path, _ in code_files:
+        print(" -", path)
+
 
     if not code_files:
         print("❌ No Python files found for review. Please check include/exclude paths.")

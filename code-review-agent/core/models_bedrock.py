@@ -17,7 +17,11 @@ class WrappedBedrockModel:
 
     def generate(self, prompt: str):
         print("PROMPT BEING SENT TO BEDROCK:\n", prompt)
-        return self.llm.invoke(prompt)
+        response= self.llm.invoke(prompt)
+        print("-----------------------RESPONSE-START---------------------------")
+        print(response)
+        print("-----------------------RESPONSE-END-----------------------------")
+        return response
 
 
 def get_bedrock_model(model_cfg: dict):

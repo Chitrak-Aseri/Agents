@@ -30,7 +30,7 @@ class ReviewAgent:
             Return the result as valid JSON with keys: "score", "feedback", "suggestions", "strengths"
             {format_instructions}
 
-
+            NEVER REVIEW THE FILES ONE BY ONE , YOU WOULD REVIEW ALL THE FILES AND STRUCTURE AT ONCE AND THE SCORE IS COMPUTED BASED ON ALL THE FIL.
             ONLY output a JSON object conforming to the following schema. Do not include any code, markdown, explanations, or extra text. Your output MUST start with '{{' and end with '}}'.
 
             Output schema:

@@ -1,8 +1,8 @@
 # code-review-agent/core/models.py
 import os
-from app.core.models_openai import OpenAIModel
-from app.core.models_deepseek import DeepSeekModel
-from app.core.models_bedrock import get_bedrock_model
+from .models_openai import OpenAIModel
+from .models_deepseek import DeepSeekModel
+from .models_bedrock import get_bedrock_model
 
 # Add imports for other provider model wrappers here
 

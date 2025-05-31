@@ -1,0 +1,71 @@
+
+model:
+  provider:
+    type: bedrock
+  model_name: mistral.mistral-small-2402-v1:0
+  region: us-east-1
+  credentials:
+    aws_access_key_id: ${AWS_ACCESS_KEY_ID}
+    aws_secret_access_key: ${AWS_SECRET_ACCESS_KEY}
+
+include:
+  - src/
+  - test-codebase/
+exclude:
+  - test-codebase/functions/
+
+score_threshold: 80
+
+
+# model:
+#   provider:
+#     type: bedrock
+#   model_name: amazon.titan-text-premier-v1:0
+#   region: us-east-1
+#   credentials:
+#     aws_access_key_id: ${AWS_ACCESS_KEY_ID}
+#     aws_secret_access_key: ${AWS_SECRET_ACCESS_KEY}
+
+# include:
+#   - src/
+#   - test-codebase/
+# exclude:
+#   - test-codebase/functions/
+
+# score_threshold: 80
+
+
+# model:
+#   provider:
+#     type: deepseek
+#   model_name: deepseek-chat
+#   credentials:
+#     api_key: ${DEEPSEEK_API_KEY}
+#     api_base: https://api.deepseek.com/v1
+
+# include:
+#   - src/
+#   - test-codebase/
+# exclude:
+#   - test-codebase/functions/
+
+# score_threshold: 80
+
+
+# model:
+#   provider:
+#     type: bedrock
+#   model_name: meta.llama3-70b-instruct-v1:0
+#   region: us-east-1
+#   credentials:
+#     aws_access_key_id: ${AWS_ACCESS_KEY_ID}
+#     aws_secret_access_key: ${AWS_SECRET_ACCESS_KEY}
+
+# include:
+#   - src/
+#   - test-codebase/
+# exclude:
+#   - test-codebase/functions/
+
+# score_threshold: 80
+

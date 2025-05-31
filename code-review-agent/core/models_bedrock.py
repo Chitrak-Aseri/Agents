@@ -26,7 +26,6 @@ def get_bedrock_model(model_cfg: dict):
         region=model_cfg.get("region", "us-east-1"),
         credentials=model_cfg.get("credentials", {}),
         model_kwargs={
-            "temperature": model_cfg.get("temperature", 1.0),
-            "top_p" : 1.0
+            "temperature": model_cfg.get("temperature", 1.0)
         },
     )

@@ -1,0 +1,23 @@
+{
+    "score": 85,
+    "feedback": [
+        "Good use of docstrings and function signatures.",
+        "Function names are descriptive.",
+        "Code follows PEP8 style guide.",
+        "Consistent indentation.",
+        "Use of random.choice() in draw_card() is good.",
+        "calculate_pi() could benefit from using math.pi instead of approximation for larger numbers.",
+        "simulate_game() could return results as a dictionary instead of printing to console."
+    ],
+    "suggestions": [
+        "Add type hints to function signatures.",
+        "Add more test cases in separate files to ensure functions work as expected.",
+        "Consider using a loop for factorial calculation to avoid stack overflow for large numbers.",
+        "Use constants for ranks and suits in draw_card() function."
+    ],
+    "strengths": [
+        "Clear and concise code.",
+        "Each function has a single responsibility.",
+        "Use of recursion in factorial() is appropriate."
+    ]
+}

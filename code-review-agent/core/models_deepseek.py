@@ -21,4 +21,7 @@ class DeepSeekModel:
         self.llm = ChatOpenAI(**init_params)
 
     def generate(self, prompt: str) -> str:
+        print("--------------Start-Prompt------------------")
+        print(prompt)
+        print("--------------End-Prompt------------------")
         return self.llm.predict(prompt)

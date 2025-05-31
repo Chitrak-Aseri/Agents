@@ -5,7 +5,12 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "dotenv>=0.9.9",
     "langchain>=0.3.25",
+    "langchain-aws>=0.2.24",
+    "langchain-openai>=0.3.18",
+    "pydantic>=2.11.5",
+    "pyyaml>=6.0.2",
 ]
 
 [dependency-groups]

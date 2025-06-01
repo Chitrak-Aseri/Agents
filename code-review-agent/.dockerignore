@@ -1,0 +1,11 @@
+.venv
+.git
+test-codebase
+ex-configs
+.env
+.env.*
+.gitkeep
+Dockerfile
+.dockerignore
+Makefile
+code_review_result.json

@@ -5,7 +5,7 @@ author: "Manav Khandurie"
 inputs:
   config-path:
     description: "Path to the YAML config file"
-    required: false
+    required: true
     default: "ai-reviewer.yaml"
   score-threshold:
     description: "Override score threshold"

@@ -15,4 +15,4 @@ jobs:
           config-path: "code-review-agent/ex-configs/deepseek-config.yaml"
           score-threshold: 75
         env:
-          OPENAI_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }} 
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }} 

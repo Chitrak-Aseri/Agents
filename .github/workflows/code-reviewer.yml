@@ -12,7 +12,7 @@ jobs:
       - name: Run AI Code Review Agent
         uses: ./code-review-agent
         with:
-          config-path: "code-review-agent/ai-reviewer.yaml"
+          config-path: "code-review-agent/ex-configs/deepseek-config.yaml"
           score-threshold: 75
         env:
           OPENAI_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }} 

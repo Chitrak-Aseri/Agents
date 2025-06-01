@@ -1,6 +1,6 @@
 FROM python:3.12-slim AS builder
 
-WORKDIR /app
+WORKDIR /github/workspace
 
 COPY . .
 
@@ -14,4 +14,4 @@ COPY . .
 
 RUN pip install -r requirements.txt
 
-ENTRYPOINT ["python", "main.py"]
+ENTRYPOINT ["python", "code-review-agent/main.py"]

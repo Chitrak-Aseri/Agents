@@ -12,4 +12,4 @@ RUN apt-get update && apt-get install -y \
 
 RUN pip install -r requirements.txt
 
-ENTRYPOINT ["python", "code-review-agent/main.py"]
+ENTRYPOINT ["python", "main.py"]

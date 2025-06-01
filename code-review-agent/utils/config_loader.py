@@ -5,10 +5,8 @@ import yaml
 import re
 from dotenv import load_dotenv
 
-# Load environment variables from .env file
 load_dotenv()
 
-# Regex pattern to match ${ENV_VAR}
 env_var_pattern = re.compile(r'\${(\w+)}')
 
 def replace_env_vars(value: str) -> str:
@@ -22,10 +20,18 @@ def substitute_env_vars(obj):
     elif isinstance(obj, str):
         return replace_env_vars(obj)
     else:
-        print(obj)
         return obj
 
-def load_config(path: str = "ai-reviewer.yaml"):
+def load_config(path: str = "ai-reviewer.yaml", overrides: dict = None):
     with open(path, "r") as f:
         data = yaml.safe_load(f)
-        return substitute_env_vars(data)
+        config = substitute_env_vars(data)
+
+    overrides = overrides or {}
+
+    # Apply overrides only if the value is not None
+    for key, value in overrides.items():
+        if value is not None:
+            config[key] = value
+
+    return config

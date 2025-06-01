@@ -3,10 +3,12 @@
 import os
 import json
 import glob
+import argparse
 from agents.review_agent import ReviewAgent
 from core.models import get_model_instance
 from utils.config_loader import load_config
 from utils.file_loader import load_codebase
+import re
 
 
 def get_file_structure(root, include_paths, exclude_paths):
@@ -20,29 +22,16 @@ def get_file_structure(root, include_paths, exclude_paths):
                 result.append(abs_file.replace(root, ""))
     return "\n".join(result)
 
-import json
-import re
 
 def parse_llm_response_to_json(response_text: str) -> dict:
-    """
-    Tries to parse JSON content from the response text.
-    Handles:
-    - Raw JSON
-    - JSON wrapped in triple quotes
-    - JSON in ```json fenced blocks
-    """
     response_text = response_text.strip()
-
-    # Handle triple quotes edge case
     response_text = response_text.strip('"""').strip("```").strip()
 
-    # Try parsing raw JSON directly
     try:
         return json.loads(response_text)
     except json.JSONDecodeError:
         pass
 
-    # Try extracting JSON using regex as fallback
     json_regex = r"\{[\s\S]*?\}"
     match = re.search(json_regex, response_text)
     if match:
@@ -55,15 +44,33 @@ def parse_llm_response_to_json(response_text: str) -> dict:
     raise ValueError("Failed to extract JSON from the LLM response.")
 
 
-
-
 def main():
-    config = load_config()
-    root_dir = os.getcwd()
+    parser = argparse.ArgumentParser(description="AI Code Reviewer CLI")
 
+    parser.add_argument(
+        "--config",
+        type=str,
+        default="ai-reviewer.yaml",
+        help="Path to the config YAML file (default: ai-reviewer.yaml)"
+    )
+
+    parser.add_argument(
+        "--score-threshold",
+        type=int,
+        help="Override the score threshold defined in the config"
+    )
+
+    args = parser.parse_args()
+
+    # Load config with overrides
+    config = load_config(path=args.config, overrides={
+        "score_threshold": args.score_threshold
+    })
+
+    root_dir = os.getcwd()
     includes = config.get("include", [])
     excludes = config.get("exclude", [])
-    
+
     structure = get_file_structure(root_dir, includes, excludes)
 
     code_files = load_codebase(
@@ -71,13 +78,12 @@ def main():
         excludes=[os.path.join(root_dir, path) for path in excludes]
     )
 
-    for path, _ in code_files:
-        print(" -", path)
-
-
     if not code_files:
         print("❌ No Python files found for review. Please check include/exclude paths.")
         exit(1)
+
+    for path, _ in code_files:
+        print(" -", path)
 
     code = "\n\n".join([
         f"### {file_path.replace(root_dir, '')} ###\n{content}"
@@ -86,12 +92,11 @@ def main():
 
     model = get_model_instance(config["model"])
     agent = ReviewAgent(model)
-
     review_result = agent.generate_code_review(code, structure)
+
     print("\n\nAI REVIEW OUTPUT:\n", review_result)
 
     try:
-        # Persist the structured output
         with open("code_review_result.json", "w") as f:
             json.dump(review_result.dict(), f, indent=4)
 

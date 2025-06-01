@@ -1,0 +1,17 @@
+model:
+  provider:
+    type: deepseek
+  model_name: deepseek-chat
+  credentials:
+    api_key: ${DEEPSEEK_API_KEY}
+    api_base: https://api.deepseek.com/v1
+include:
+  - .
+exclude:
+  - ".venv/*"
+  - "test-codebase/*"
+  - "**/__pycache__/"
+  - "**/*.pyc"
+  - "**/*.egg-info/"
+  - "**/.pytest_cache/"
+score_threshold: 80

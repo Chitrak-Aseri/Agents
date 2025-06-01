@@ -1,7 +1,7 @@
 model:
   provider:
     type: bedrock
-  model_name: amazon.titan-text-premier-v1:0
+  model_name: meta.llama3-70b-instruct-v1:0
   region: us-east-1
   credentials:
     aws_access_key_id: ${AWS_ACCESS_KEY_ID}

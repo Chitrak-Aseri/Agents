@@ -1,6 +1,6 @@
 FROM python:3.12-slim AS builder
 
-WORKDIR /app
+WORKDIR /action
 
 COPY . .
 
@@ -12,4 +12,4 @@ RUN apt-get update && apt-get install -y \
 
 RUN pip install -r requirements.txt
 
-ENTRYPOINT ["python", "main.py"]
+ENTRYPOINT ["python", "/action/main.py"]

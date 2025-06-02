@@ -68,7 +68,7 @@ def main():
     })
 
     # 👇 Use the config file location to infer the repo root
-    root_dir = os.path.dirname(config_path)
+    root_dir = os.path.abspath(os.getcwd())
     includes = config.get("include", [])
     excludes = config.get("exclude", [])
 

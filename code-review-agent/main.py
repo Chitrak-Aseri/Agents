@@ -81,6 +81,15 @@ def main():
     )
 
     if not code_files:
+        print("-------------------------ROOTDIR-------------------")
+        print(root_dir)
+        print("-------------------------ROOTDIR-------------------")
+        print("-------------------------INCLUDES-------------------")
+        print(includes)
+        print("-------------------------INCLUDES-------------------")
+        print("-------------------------EXCLUDES-------------------")
+        print(excludes)
+        print("-------------------------EXCLUDES-------------------")
         print("❌ No Python files found for review. Please check include/exclude paths.")
         exit(1)
 

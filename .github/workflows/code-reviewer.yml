@@ -1,21 +1,21 @@
-name: AI Code Review
+# name: AI Code Review
 
-on: [push, pull_request]
+# on: [push, pull_request]
 
-jobs:
-  review:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+# jobs:
+#   review:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout repo
+#         uses: actions/checkout@v3
 
-      - name: Run AI Code Review Agent
-        uses: ./code-review-agent
-        with:
-          config-path: "code-review-agent/ai-reviewer.yaml"
-          score-threshold: 75
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
+#       - name: Run AI Code Review Agent
+#         uses: ./code-review-agent
+#         with:
+#           config-path: "code-review-agent/ai-reviewer.yaml"
+#           score-threshold: 75
+#         env:
+#           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#           AWS_REGION: ${{ secrets.AWS_REGION }}
 

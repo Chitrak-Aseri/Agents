@@ -12,9 +12,9 @@ jobs:
       - name: Debug container contents
         run: |
           ls -la 
-          
+
       - name: Run AI Code Review Agent
-        uses: Manav-Khandurie/agents/code-review-agent@main #LATEST VERSION with tag
+        uses: Manav-Khandurie/agents/code-review-agent@1.0.3 # Stable tested 1.0.3
         with:
           config-path: "code-review-agent/ai-reviewer.yaml"
           score-threshold: 85

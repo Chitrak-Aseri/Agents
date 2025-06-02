@@ -12,7 +12,7 @@ jobs:
       - name: Run AI Code Review Agent
         uses: ./code-review-agent
         with:
-          config-path: "code-review-agent/ex-configs/bedrock-titan-config.yaml"
+          config-path: "code-review-agent/ai-reviewer.yaml"
           score-threshold: 75
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}

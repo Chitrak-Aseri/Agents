@@ -1,6 +1,7 @@
 FROM python:3.12-slim AS builder
 
-WORKDIR /action
+# Create working directory for action files
+WORKDIR /code-review-agent
 
 COPY . .
 
@@ -10,6 +11,7 @@ RUN apt-get update && apt-get install -y \
     git \
     && rm -rf /var/lib/apt/lists/*
 
+RUN uv export --no-dev --no-hashes > requirements.txt
 RUN pip install -r requirements.txt
 
-ENTRYPOINT ["python", "/action/main.py"]
+ENTRYPOINT ["python", "/code-review-agent/main.py"]

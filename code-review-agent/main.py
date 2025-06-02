@@ -59,35 +59,37 @@ def main():
         type=int,
         help="Override the score threshold defined in the config"
     )
-
     args = parser.parse_args()
+    config_path = os.path.abspath(args.config)
 
     # Load config with overrides
     config = load_config(path=args.config, overrides={
         "score_threshold": args.score_threshold
     })
 
-    root_dir = os.getcwd()
+    # 👇 Use the config file location to infer the repo root
+    root_dir = os.path.dirname(config_path)
     includes = config.get("include", [])
     excludes = config.get("exclude", [])
 
     structure = get_file_structure(root_dir, includes, excludes)
 
     code_files = load_codebase(
-        includes=[os.path.join(root_dir, path) for path in includes],
-        excludes=[os.path.join(root_dir, path) for path in excludes]
+        root_path=root_dir,
+        include_paths=includes,
+        exclude_paths=excludes
     )
 
     if not code_files:
         print("❌ No Python files found for review. Please check include/exclude paths.")
         exit(1)
 
-    for path, _ in code_files:
-        print(" -", path)
+    for file in code_files:
+        print(" -", file["path"])
 
     code = "\n\n".join([
-        f"### {file_path.replace(root_dir, '')} ###\n{content}"
-        for file_path, content in code_files
+        f"### {file['path']} ###\n{file['content']}"
+        for file in code_files
     ])
 
     model = get_model_instance(config["model"])

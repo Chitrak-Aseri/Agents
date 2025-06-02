@@ -9,3 +9,4 @@ Dockerfile
 .dockerignore
 Makefile
 code_review_result.json
+requirements.txt

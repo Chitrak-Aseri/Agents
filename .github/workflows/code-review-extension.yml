@@ -9,6 +9,10 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
+      - name: Debug container contents
+        run: |
+          ls -la 
+          
       - name: Run AI Code Review Agent
         uses: Manav-Khandurie/agents/code-review-agent@main #LATEST VERSION with tag
         with:
@@ -21,5 +25,4 @@ jobs:
       
       - name: Debug container contents
         run: |
-          ls -la /github/workspace
-          ls -la /github/workspace/code-review-agent
+          ls -la 

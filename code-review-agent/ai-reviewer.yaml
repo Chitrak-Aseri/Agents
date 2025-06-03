@@ -1,18 +1,17 @@
 model:
   provider:
-    type: bedrock
-  model_name: amazon.titan-text-premier-v1:0
+    type: openai
+  model_name: gpt-4o-mini
   region: us-east-1
   credentials:
-    aws_access_key_id: ${AWS_ACCESS_KEY_ID}
-    aws_secret_access_key: ${AWS_SECRET_ACCESS_KEY}
+    api_key: ${OPEN_API_KEY}
 include:
   - .
 exclude:
-  - ".venv/*"
-  - "test-codebase/*"
+  - ".venv"
+  - "test-codebase"
   - "**/__pycache__/"
   - "**/*.pyc"
   - "**/*.egg-info/"
   - "**/.pytest_cache/"
-score_threshold: 80
+score_threshold: 75

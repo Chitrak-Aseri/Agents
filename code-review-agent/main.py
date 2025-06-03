@@ -79,7 +79,7 @@ def main():
         include_paths=includes,
         exclude_paths=excludes
     )
-
+    print(code_files)
     if not code_files:
         print("-------------------------ROOTDIR-------------------")
         print(root_dir)
@@ -130,3 +130,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+  
+
+    

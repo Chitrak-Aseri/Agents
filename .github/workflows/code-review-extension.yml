@@ -14,7 +14,7 @@ jobs:
           ls -la 
 
       - name: Run AI Code Review Agent
-        image: "docker://manavkhandurie/code-review-agent:v1.0.4" # Stable tested 1.0.3
+        uses: Manav-Khandurie/agents/code-review-agent@main # Stable tested 1.0.3
         with:
           config-path: "code-review-agent/ai-reviewer.yaml"
           score-threshold: 85

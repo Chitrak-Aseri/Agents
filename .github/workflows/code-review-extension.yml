@@ -14,7 +14,7 @@ jobs:
           ls -la 
 
       - name: Run AI Code Review Agent
-        uses: Manav-Khandurie/agents/code-review-agent@code-review-agent-v1.0.3 # Stable tested 1.0.3
+        uses: Manav-Khandurie/agents/code-review-agent@main # Stable tested 1.0.3
         with:
           config-path: "code-review-agent/ai-reviewer.yaml"
           score-threshold: 85
@@ -22,6 +22,7 @@ jobs:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          OPEN_API_KEY: ${{ secrets.OPEN_API_KEY }}
       
       - name: Debug container contents
         run: |

@@ -6,10 +6,10 @@ model:
     api_key: ${DEEPSEEK_API_KEY}
     api_base: https://api.deepseek.com/v1
 include:
-  - .
+  - "core"
 exclude:
-  - ".venv/*"
-  - "test-codebase/*"
+  - ".venv"
+  - "test-codebase"
   - "**/__pycache__/"
   - "**/*.pyc"
   - "**/*.egg-info/"

@@ -12,6 +12,7 @@ jobs:
       - name: Debug container contents
         run: |
           ls -la 
+          tree
 
       - name: Run AI Code Review Agent
         uses: Manav-Khandurie/agents/code-review-agent@main # Stable tested 1.0.3

@@ -3,9 +3,9 @@ import os
 from .models_openai import OpenAIModel
 from .models_deepseek import DeepSeekModel
 from .models_bedrock import get_bedrock_model
-from .models_huggingface import HuggingFacePhiModel
+from .models_huggingface import HuggingFaceChatModel
 
-# Add imports for other provider model wrappers here
+# Add imports for other provider model wrappers here (e.g., GoogleGeminiModel, GroqModel, etc.)
 
 def get_model_instance(config: dict):
     provider_cfg = config.get("provider", {})
@@ -27,21 +27,16 @@ def get_model_instance(config: dict):
     elif provider_type == "bedrock":
         return get_bedrock_model(config)
     elif provider_type == "huggingface":
-        return HuggingFacePhiModel(
+        return HuggingFaceChatModel(
             model_name=config.get("model_name", "microsoft/phi-4"),
             temperature=config.get("temperature", 0),
             credentials=config.get("credentials", {}),
         )
-        # Return HuggingFaceModel(...)
-        pass
     elif provider_type == "google_gemini":
-        # Return GoogleGeminiModel(...)
-        pass
+        raise NotImplementedError("Google Gemini model integration not yet implemented.")
     elif provider_type == "groq":
-        # Return GroqModel(...)
-        pass
+        raise NotImplementedError("Groq model integration not yet implemented.")
     elif provider_type == "custom":
-        # Return CustomModel(...)
-        pass
+        raise NotImplementedError("Custom model integration not yet implemented.")
     else:
         raise ValueError(f"Unsupported provider type: {provider_type}")

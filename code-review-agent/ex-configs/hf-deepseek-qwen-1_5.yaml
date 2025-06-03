@@ -1,12 +1,15 @@
+
+
 model:
   provider:
-    type: openai
-  model_name: gpt-4o-mini
+    type: huggingface
+  model_name: deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B
   region: us-east-1
   credentials:
-    api_key: ${OPEN_API_KEY}
+    api_base: ${HF_API_BASE_DEEPSEEK_QWEN_1_5B}
+    api_key: ${HF_TOKEN}
 include:
-  - .
+  - "."
 exclude:
   - ".venv"
   - "test-codebase"
@@ -14,5 +17,4 @@ exclude:
   - "**/*.pyc"
   - "**/*.egg-info/"
   - "**/.pytest_cache/"
-score_threshold: 75
- 
+score_threshold: 80

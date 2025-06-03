@@ -4,9 +4,11 @@ test-codebase
 ex-configs
 .env
 .env.*
+.env.example
 .gitkeep
 Dockerfile
 .dockerignore
 Makefile
 code_review_result.json
 requirements.txt
+README.md

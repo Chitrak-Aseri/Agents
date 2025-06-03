@@ -1,7 +1,7 @@
 model:
   provider:
-    type: openai
-  model_name: gpt-4o-mini
+    type: deepseek
+  model_name: deepseek-chat
   region: us-east-1
   credentials:
     api_key: ${DEEPSEEK_API_KEY}

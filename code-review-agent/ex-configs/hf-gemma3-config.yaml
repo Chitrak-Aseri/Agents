@@ -9,7 +9,7 @@ model:
     api_base: ${HF_API_BASE_GEMMA3}
     api_key: ${HF_TOKEN}
 include:
-  - "."
+  - "src"
 exclude:
   - ".venv"
   - "test-codebase"

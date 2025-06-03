@@ -9,7 +9,7 @@ model:
     api_base: ${HF_API_BASE_DEEPSEEK_QWEN_1_5B}
     api_key: ${HF_TOKEN}
 include:
-  - "."
+  - "src"
 exclude:
   - ".venv"
   - "test-codebase"

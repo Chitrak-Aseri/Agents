@@ -14,4 +14,4 @@ RUN apt-get update && apt-get install -y \
 RUN uv export --no-dev --no-hashes > requirements.txt
 RUN pip install -r requirements.txt
 
-ENTRYPOINT ["python", "/code-review-agent/main.py"]
+ENTRYPOINT ["python", "/code-review-agent/src/main.py"]

@@ -1,13 +1,10 @@
-
-
 model:
   provider:
-    type: huggingface
-  model_name: microsoft/phi-4
-  region: us-east-1
+    type: deepseek
+  model_name: deepseek-chat
   credentials:
-    api_base: ${HF_API_BASE_PHI4}
-    api_key: ${HF_TOKEN}
+    api_key: ${DEEPSEEK_API_KEY}
+    api_base: https://api.deepseek.com/v1
 include:
   - "src"
 exclude:
@@ -17,4 +14,5 @@ exclude:
   - "**/*.pyc"
   - "**/*.egg-info/"
   - "**/.pytest_cache/"
+  - "test-codebase/*"
 score_threshold: 80

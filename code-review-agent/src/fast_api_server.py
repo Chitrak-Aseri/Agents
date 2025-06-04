@@ -4,7 +4,10 @@ from pydantic import BaseModel
 from .core.models import get_model_instance
 from .agents.review_agent import ReviewAgent
 import uvicorn
-
+from dotenv import load_dotenv
+import os
+load_dotenv()
+print(os.environ)
 app = FastAPI()
 
 class ReviewRequest(BaseModel):

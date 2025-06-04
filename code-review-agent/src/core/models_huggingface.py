@@ -14,6 +14,11 @@ class HuggingFaceChatModel:
         self.model_name = model_name
         self.temperature = temperature
         self.api_base = self.api_base = credentials.get("api_base") or os.getenv("HF_API_BASE_URL")
+        if not self.api_base:
+            print("******************CREDS_HF**************************")
+            print(credentials )
+            print("********************************************")
+            raise ValueError("HuggingFace API base not provided in config or environment")
         print("********************************************")
         print(self.api_base +" <----------------------------> "+ self.model_name)
         print("********************************************")

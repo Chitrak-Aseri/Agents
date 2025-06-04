@@ -1,8 +1,8 @@
 # fastapi_server.py
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from .core.models import get_model_instance
-from .agents.review_agent import ReviewAgent
+from src.core.models import get_model_instance
+from src.agents.review_agent import ReviewAgent
 import uvicorn
 from dotenv import load_dotenv
 import os

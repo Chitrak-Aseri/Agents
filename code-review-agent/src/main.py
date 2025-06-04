@@ -4,10 +4,10 @@ import os
 import json
 import glob
 import argparse
-from agents.review_agent import ReviewAgent
-from core.models import get_model_instance
-from utils.config_loader import load_config
-from utils.file_loader import load_codebase
+from src.agents.review_agent import ReviewAgent
+from src.core.models import get_model_instance
+from src.utils.config_loader import load_config
+from src.utils.file_loader import load_codebase
 import re
 
 

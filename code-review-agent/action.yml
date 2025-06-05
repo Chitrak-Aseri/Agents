@@ -12,7 +12,7 @@ inputs:
 
 runs:
   using: "docker"
-  image: "Dockerfile"
+  image: "docker://manavkhandurie/code-review-agent:v1.1.0"
   args:
     - "--config"
     - ${{ inputs.config-path }}

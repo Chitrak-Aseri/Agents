@@ -11,4 +11,7 @@ black:
 isort:
 	uv run isort src/ tests/
 
+run-cli:
+	uv run python -m src.main --config ai-reviewer.yaml 
+
 lint-all: black isort 

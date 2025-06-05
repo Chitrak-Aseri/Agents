@@ -10,9 +10,9 @@ from .models_huggingface import HuggingFaceChatModel
 def get_model_instance(config: dict):
     provider_cfg = config.get("provider", {})
     provider_type = provider_cfg.get("type")
-    print("------------------------------CREDS_MODELS---------------------")
-    print(config.get("credentials", {}))
-    print("------------------------------CREDS_MODELS---------------------")
+    # print("------------------------------CREDS_MODELS---------------------")
+    # print(config.get("credentials", {}))
+    # print("------------------------------CREDS_MODELS---------------------")
     if provider_type == "openai":
         return OpenAIModel(
             model_name=config.get("model_name"),

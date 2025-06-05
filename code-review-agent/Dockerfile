@@ -1,7 +1,7 @@
 FROM python:3.12-slim AS builder
 
-# Create working directory for action files
-WORKDIR /code-review-agent
+# Set working directory to where src/ actually is
+WORKDIR /code-review-agent/code-review-agent
 
 COPY . .
 
@@ -14,4 +14,7 @@ RUN apt-get update && apt-get install -y \
 RUN uv export --no-dev --no-hashes > requirements.txt
 RUN pip install -r requirements.txt
 
-ENTRYPOINT ["python","-m", "src.main"]
+# Set working directory for runtime as well
+WORKDIR /code-review-agent/code-review-agent
+
+ENTRYPOINT ["python", "-m", "src.main"]

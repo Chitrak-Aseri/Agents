@@ -1,11 +1,10 @@
 model:
   provider:
-    type: huggingface
-  model_name: google/gemma-3-27b-it-fast
+    type: openai
+  model_name: gpt-4o-mini
   region: us-east-1
   credentials:
-    api_base: ${HF_API_BASE_GEMMA3}
-    api_key: ${HF_TOKEN}
+    api_key: ${OPEN_API_KEY}
 include:
   - "src"
 exclude:
@@ -15,4 +14,5 @@ exclude:
   - "**/*.pyc"
   - "**/*.egg-info/"
   - "**/.pytest_cache/"
-score_threshold: 80
+score_threshold: 75
+ 

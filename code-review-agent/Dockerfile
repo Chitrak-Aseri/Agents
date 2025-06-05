@@ -1,7 +1,5 @@
 FROM python:3.12-slim AS builder
 
-WORKDIR /code-review-agent/code-review-agent
-
 COPY . .
 
 RUN pip install --upgrade pip

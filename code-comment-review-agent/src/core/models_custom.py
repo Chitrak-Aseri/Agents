@@ -3,7 +3,32 @@ import requests
 import json
 
 class CustomModel:
+    """A customizable model class for making API requests to external model endpoints.
+    
+    Attributes:
+        endpoint (str): The API endpoint URL.
+        method (str): HTTP method (default: POST).
+        headers (dict): Additional HTTP headers.
+        body_template (dict): Template for request body structure.
+        response_path (str): Dot-path to extract response data.
+        timeout (int): Request timeout in seconds (default: 10).
+        retries (int): Number of retry attempts (default: 3).
+        request_format (str): Request format ('json', 'form', or other).
+    """
     def __init__(self, config):
+        """Initialize the CustomModel with configuration parameters.
+        
+        Args:
+            config (dict): Configuration dictionary containing:
+                - endpoint: API endpoint URL
+                - method: HTTP method (optional)
+                - headers: Additional headers (optional)
+                - body_template: Request body template (optional)
+                - response_path: Response extraction path (optional)
+                - timeout: Request timeout (optional)
+                - retries: Retry count (optional)
+                - request_format: Request format (optional)
+        """
         self.endpoint = config["endpoint"]
         self.method = config.get("method", "POST").upper()
         self.headers = config.get("headers", {})
@@ -14,6 +39,20 @@ class CustomModel:
         self.request_format = config.get("request_format", "json")
 
     def generate(self, prompt: str, temperature=0, max_tokens=512, stop=None):
+        """Generate a response from the custom model.
+        
+        Args:
+            prompt (str): Input prompt text.
+            temperature (float): Generation temperature (default: 0).
+            max_tokens (int): Maximum tokens to generate (default: 512).
+            stop (str|None): Stop sequence for generation (optional).
+            
+        Returns:
+            The generated response from the model.
+            
+        Raises:
+            RuntimeError: If all retry attempts fail.
+        """
         # Build request body mapping
         body = {}
         body[self.body_template.get("prompt_key", "prompt")] = prompt
@@ -22,7 +61,7 @@ class CustomModel:
         if self.body_template.get("stop_key") and stop:
             body[self.body_template["stop_key"]] = stop
 
-        # Format request
+        # Format request based on specified format
         if self.request_format == "json":
             req_data = json.dumps(body)
             headers = {"Content-Type": "application/json", **self.headers}
@@ -33,6 +72,7 @@ class CustomModel:
             req_data = body
             headers = self.headers
 
+        # Attempt request with retries
         for _ in range(self.retries or 1):
             try:
                 resp = requests.request(

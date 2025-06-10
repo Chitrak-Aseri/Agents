@@ -12,6 +12,16 @@ import re
 
 
 def get_file_structure(root, include_paths, exclude_paths):
+    """Get the file structure of the codebase as a string.
+    
+    Args:
+        root: Root directory path
+        include_paths: List of paths to include
+        exclude_paths: List of paths to exclude
+        
+    Returns:
+        str: Newline-separated string of relative file paths
+    """
     exclude_abs = [os.path.abspath(os.path.join(root, p)) for p in exclude_paths]
     result = []
     for path in include_paths:
@@ -24,6 +34,17 @@ def get_file_structure(root, include_paths, exclude_paths):
 
 
 def parse_llm_response_to_json(response_text: str) -> dict:
+    """Parse LLM response text to extract JSON content.
+    
+    Args:
+        response_text: Raw response text from LLM
+        
+    Returns:
+        dict: Parsed JSON content
+        
+    Raises:
+        ValueError: If no valid JSON could be extracted
+    """
     response_text = response_text.strip()
     response_text = response_text.strip('"""').strip("```").strip()
 
@@ -45,6 +66,7 @@ def parse_llm_response_to_json(response_text: str) -> dict:
 
 
 def main():
+    """Main entry point for the code review CLI tool."""
     parser = argparse.ArgumentParser(description="AI Code Reviewer CLI")
 
     parser.add_argument(
@@ -129,6 +151,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-  
-
-    

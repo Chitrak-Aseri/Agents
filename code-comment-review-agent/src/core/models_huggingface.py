@@ -4,6 +4,13 @@ import os
 import requests
 
 class HuggingFaceChatModel:
+    """A class for interacting with HuggingFace's chat completion API.
+
+    Args:
+        model_name (str): The name of the model to use (default: "google/gemma-3-27b-it-fast")
+        temperature (float): Sampling temperature for generation (default: 0.7)
+        credentials (dict, optional): Dictionary containing API credentials (HF_TOKEN and api_base)
+    """
     def __init__(self, model_name="google/gemma-3-27b-it-fast", temperature=0.7, credentials=None):
         credentials = credentials or {}
 
@@ -22,7 +29,19 @@ class HuggingFaceChatModel:
         print("********************************************")
         print(self.api_base +" <----------------------------> "+ self.model_name)
         print("********************************************")
+
     def generate(self, prompt: str) -> str:
+        """Generate a response from the model given a prompt.
+
+        Args:
+            prompt (str): The input text prompt for the model
+
+        Returns:
+            str: The generated response from the model
+
+        Raises:
+            RuntimeError: If the API request fails
+        """
         print("--------------Start-Prompt------------------")
         print(prompt)
         print("--------------End-Prompt--------------------")

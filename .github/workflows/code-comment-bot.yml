@@ -27,6 +27,7 @@ jobs:
         uses: Manav-Khandurie/auto-code-commenter@v1.4.0
         with:
           src: "./code-comment-review-agent/src"
-          provider: "openai"
-          model_name: "gpt-4o-mini"
-          api_key: ${{ secrets.OPENAI_API_KEY }} #changes here
+          provider: "deepseek"
+          model_name: "deepseek-chat"
+          api_key: ${{ secrets.DEEPSEEK_API_KEY }}
+          api_base: "https://api.deepseek.com/v1"

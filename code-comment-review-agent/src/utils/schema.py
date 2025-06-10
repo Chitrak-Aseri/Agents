@@ -11,6 +11,7 @@ class CodeReviewSchema(BaseModel):
         strengths: List of positive aspects found in the code.
     """
     score: int
+    code_comment: bool
     feedback: List[str]
     suggestions: List[str]
     strengths: List[str]

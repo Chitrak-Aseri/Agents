@@ -31,27 +31,27 @@ class ReviewAgent:
         """
         prompt = PromptTemplate(
             template="""
-            You are a senior software engineer specializing in **code comment quality reviews**. Your task is to review the following Python code **purely based on its comments** and provide a concise, structured JSON output with:
+            You are a senior software engineer specializing in **code comment quality reviews**. Review the following Python code **only for its commenting quality**, and return a concise JSON with the fields:
 
-            - **score** (0–100): A numeric rating of how well the code is commented for readability and maintainability.
-            - **code_comment** (true/false): Should more comments be added? Return `true` if the code lacks sufficient comments.
-            - **feedback**: Short, specific notes about missing, redundant, unclear, or misleading comments.
-            - **suggestions**: Precise recommendations for improving comment clarity, relevance, and coverage.
-            - **strengths**: Brief points highlighting what's done well in terms of code commenting.
+            - **score**: An integer (0–100) representing how well the code is commented.
+            - **code_comment**: A boolean indicating whether more comments are needed (`true` if additional comments are recommended).
+            - **feedback**: A list of short, specific observations about comment issues (missing, redundant, unclear).
+            - **suggestions**: Clear improvements for enhancing code comments (clarity, coverage, precision).
+            - **strengths**: Highlights of well-commented aspects of the code.
 
-            **Review only the quality, clarity, sufficiency, and relevance of comments in the code.** Ignore logic, structure, or functionality unless it directly relates to commenting needs.
+            ⚠️ **Only review code comments** — do not evaluate code logic, syntax, or functionality unless it directly relates to comment quality.
 
-            You are reviewing the entire codebase at once. DO NOT evaluate file-by-file. Base your score and analysis on the full context provided.
+            You are reviewing all files together, not individually. Base your score and feedback on the entire codebase context.
 
-            Project structure:
+            Project Structure:
             {structure}
 
             Codebase:
             {code}
 
-            Your response must strictly follow the format below. Do not include markdown, explanations, or any extra text. Start your response with '{{' and end with '}}'.
+            Respond only with valid JSON (no markdown or extra text). Output must begin with `{{` and end with `}}`.
 
-            Output schema:
+            Expected Output:
             {{
             "score": integer,
             "code_comment": boolean,
@@ -62,6 +62,7 @@ class ReviewAgent:
 
             {format_instructions}
             """
+
             ,
             input_variables=["structure", "code"],
             partial_variables={"format_instructions": self.parser.get_format_instructions()}

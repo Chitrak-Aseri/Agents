@@ -1,17 +1,18 @@
 {
-    "score": 65,
+    "score": 85,
+    "code_comment": false,
     "feedback": [
-        "Many functions and classes lack docstrings or comments explaining their purpose and usage.",
-        "Some comments are vague and do not provide enough context for understanding the code.",
-        "There are instances of commented-out code that should either be removed or explained."
+        "Most classes and functions have clear docstrings.",
+        "Some comments are redundant or overly verbose.",
+        "Inline comments are minimal and could be more descriptive."
     ],
     "suggestions": [
-        "Add docstrings to all classes and methods to describe their functionality and parameters.",
-        "Provide more context in comments, especially for complex logic or non-obvious code sections.",
-        "Remove or clarify any commented-out code to avoid confusion."
+        "Reduce redundancy in comments by removing unnecessary explanations.",
+        "Add more inline comments to clarify complex logic.",
+        "Ensure all public methods have comprehensive docstrings."
     ],
     "strengths": [
-        "Some comments provide basic context for certain sections of the code.",
-        "The use of comments to indicate where to load environment variables is helpful."
+        "Class-level docstrings provide a good overview of functionality.",
+        "Function docstrings generally follow a consistent format."
     ]
 }

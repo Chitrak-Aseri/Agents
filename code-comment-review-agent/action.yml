@@ -1,0 +1,20 @@
+name: "AI Code Comment Review Agent"
+description: "Run GenAI-powered code comment reviews using a Python-based CLI"
+author: "Manav Khandurie"
+
+inputs:
+  config-path:
+    description: "Path to the YAML config file"
+    required: true
+  score-threshold:
+    description: "Override score threshold"
+    required: false
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - "--config"
+    - ${{ inputs.config-path }}
+    - "--score-threshold"
+    - ${{ inputs.score-threshold }}

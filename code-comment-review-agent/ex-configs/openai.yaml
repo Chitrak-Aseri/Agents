@@ -1,0 +1,18 @@
+model:
+  provider:
+    type: openai
+  model_name: gpt-4o-mini
+  region: us-east-1
+  credentials:
+    api_key: ${OPEN_API_KEY}
+include:
+  - "src"
+exclude:
+  - ".venv"
+  - "test-codebase"
+  - "**/__pycache__/"
+  - "**/*.pyc"
+  - "**/*.egg-info/"
+  - "**/.pytest_cache/"
+score_threshold: 75
+ 

@@ -1,0 +1,20 @@
+
+
+model:
+  provider:
+    type: huggingface
+  model_name: deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B
+  region: us-east-1
+  credentials:
+    api_base: ${HF_API_BASE_DEEPSEEK_QWEN_1_5B}
+    api_key: ${HF_TOKEN}
+include:
+  - "src"
+exclude:
+  - ".venv"
+  - "test-codebase"
+  - "**/__pycache__/"
+  - "**/*.pyc"
+  - "**/*.egg-info/"
+  - "**/.pytest_cache/"
+score_threshold: 80

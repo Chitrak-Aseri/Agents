@@ -1,0 +1,20 @@
+
+
+model:
+  provider:
+    type: huggingface
+  model_name: microsoft/phi-4
+  region: us-east-1
+  credentials:
+    api_base: ${HF_API_BASE_PHI4}
+    api_key: ${HF_TOKEN}
+include:
+  - "src"
+exclude:
+  - ".venv"
+  - "test-codebase"
+  - "**/__pycache__/"
+  - "**/*.pyc"
+  - "**/*.egg-info/"
+  - "**/.pytest_cache/"
+score_threshold: 80

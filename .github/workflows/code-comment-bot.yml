@@ -1,0 +1,32 @@
+name: 🤖 AI Code Comment Bot
+on:
+  schedule:
+    - cron: "0 1 * * *"  
+  workflow_dispatch:
+
+jobs:
+  auto-comment:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+      GITHUB_REPOSITORY: ${{ github.repository }}
+      BOT_NAME: "code-comment-bot"
+      BOT_EMAIL: "bot@cleocog.xyz"
+      BOT_BRANCH: "auto/comment-update"
+      PR_TITLE: "🤖 Add Code Comments"
+      PR_BODY: "This PR includes auto-generated code comments."
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      
+      - name: Run Code Comment Bot
+        uses: Manav-Khandurie/auto-code-commenter@v1.4.0
+        with:
+          src: "./code-comment-review-agent/src"
+          provider: "openai"
+          model_name: "gpt-4o-mini"
+          api_key: ${{ secrets.OPENAI_API_KEY }} #changes here

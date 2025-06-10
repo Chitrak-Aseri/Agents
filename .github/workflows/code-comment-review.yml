@@ -9,6 +9,11 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
+      - name: Debug container contents
+        run: |
+          ls -la 
+          tree
+
       - name: Run AI Code Review Agent
         uses: Manav-Khandurie/agents/code-comment-review-agent@main # Stable tested 1.0.3
         with:

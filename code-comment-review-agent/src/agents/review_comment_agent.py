@@ -5,11 +5,30 @@ from langchain.prompts import PromptTemplate
 
 
 class ReviewAgent:
+    """A code review agent that evaluates comment quality in Python code.
+    
+    This agent uses an LLM to analyze code comments and provides structured feedback
+    about comment quality, including scores, feedback, and improvement suggestions.
+    """
     def __init__(self, llm):
+        """Initialize the ReviewAgent with an LLM instance.
+        
+        Args:
+            llm: The language model instance to use for generating reviews.
+        """
         self.llm = llm
         self.parser = PydanticOutputParser(pydantic_object=CodeReviewSchema)
 
     def generate_code_review(self, code: str, structure: str) -> dict:
+        """Generate a code review focused on comment quality.
+        
+        Args:
+            code: The Python code to be reviewed (as a string).
+            structure: Description of the project structure for context.
+            
+        Returns:
+            dict: Parsed review output containing score, feedback, and suggestions.
+        """
         prompt = PromptTemplate(
             template="""
             You are a senior software engineer specializing in **code comment quality reviews**. Your task is to review the following Python code **purely based on its comments** and provide a concise, structured JSON output with:
@@ -18,7 +37,7 @@ class ReviewAgent:
             - **code_comment** (true/false): Should more comments be added? Return `true` if the code lacks sufficient comments.
             - **feedback**: Short, specific notes about missing, redundant, unclear, or misleading comments.
             - **suggestions**: Precise recommendations for improving comment clarity, relevance, and coverage.
-            - **strengths**: Brief points highlighting what’s done well in terms of code commenting.
+            - **strengths**: Brief points highlighting what's done well in terms of code commenting.
 
             **Review only the quality, clarity, sufficiency, and relevance of comments in the code.** Ignore logic, structure, or functionality unless it directly relates to commenting needs.
 

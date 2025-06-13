@@ -1,6 +1,6 @@
 # code-review-agent/agents/review_agent.py
 from langchain.output_parsers import PydanticOutputParser
-from src.utils.schema import CodeReviewSchema
+from code_commenter.utils.schema import CodeReviewSchema
 from langchain.prompts import PromptTemplate
 
 

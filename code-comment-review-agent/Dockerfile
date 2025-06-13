@@ -16,4 +16,4 @@ RUN pip install -r requirements.txt
 # Set the working directory to ensure Python finds the `src` module
 ENV PYTHONPATH=/code-comment-review-agent/code-comment-review-agent
 
-ENTRYPOINT ["python", "-m", "src.main"]
+ENTRYPOINT ["python", "-m", "code_commenter.main"]

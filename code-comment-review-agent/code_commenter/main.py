@@ -4,10 +4,10 @@ import os
 import json
 import glob
 import argparse
-from src.agents.review_comment_agent import ReviewAgent
-from src.core.models import get_model_instance
-from src.utils.config_loader import load_config
-from src.utils.file_loader import load_codebase
+from code_commenter.agents.review_comment_agent import ReviewAgent
+from code_commenter.core.models import get_model_instance
+from code_commenter.utils.config_loader import load_config
+from code_commenter.utils.file_loader import load_codebase
 import re
 
 

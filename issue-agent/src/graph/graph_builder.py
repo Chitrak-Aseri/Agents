@@ -29,7 +29,16 @@ def run_reviewer_agent(content, issues):
 
     prompt = PromptTemplate(
         template="""
-        You are an autonomous reviewer AI.
+        You are an autonomous reviewer AI designed to assist in managing GitHub issues effectively.
+        Your objective is to analyze the provided documents and the list of currently open GitHub issues to determine whether any **new and non-redundant** issues should be created.
+
+        ### Instructions:
+
+        1. Carefully compare the documents against the current issues.
+        2. Identify **gaps, untracked problems, or opportunities for improvement** that are **not already covered** by any existing issue.
+        3. Avoid creating duplicate or overlapping issues — each suggested issue must represent a **unique and clearly distinct concern**.
+        4. Group similar observations under a single cohesive issue where applicable to reduce noise.
+        5. Ensure each new issue has a **concise, descriptive title** and a **clear, actionable description**.
 
         Given the following documents:
         {content}
@@ -61,5 +70,8 @@ def run_reviewer_agent(content, issues):
 def run_autonomous_issue_agent(data_folder):
     docs = parse_all_documents(data_folder)
     issues = fetch_existing_issues()
+    print("************************EXISITING ISSUES*********************************")
+    print(issues)
+    print("************************EXISITING ISSUES*********************************")
     decision = run_reviewer_agent(docs, issues)
     run_generator_agent(decision)

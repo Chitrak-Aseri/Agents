@@ -1,41 +1,53 @@
 name: "Issue Agent"
-description: "Runs the autonomous issue agent"
+description: "Runs the autonomous issue agent using LLMs and GitHub API"
+author: "Manav Khandurie <manavkhandurie@gmail.com>"
 
 inputs:
   src:
-    description: "Source paths to analyze"
-    required: false
-    default: "./data/"
-  provider:
-    description: "LLM provider (e.g., deepseek)"
+    description: "Source path(s) to analyze"
     required: true
+
+  provider:
+    description: "LLM provider (e.g., deepseek, openai)"
+    required: true
+
   model_name:
     description: "LLM model name"
     required: true
+
   api_key:
-    description: "API key for the LLM"
+    description: "API key for the LLM provider"
     required: true
+
   api_base:
-    description: "Optional base URL for the LLM"
+    description: "Optional base URL for the LLM provider"
     required: false
     default: ""
-  github_token:
-    description: "GitHub token used inside the container (for creating/fetching issues)"
-    required: true
-  github_repo:
-    description: "GitHub repo slug (e.g., user/repo) passed to the agent"
-    required: true
+
   skip_yaml:
-    description: "Skip YAML config loading (true/false)"
+    description: "Skip loading YAML config"
     required: false
     default: "true"
+
+  github_token:
+    description: "GitHub token for creating issues"
+    required: true
+
+  github_repo:
+    description: "GitHub repo in the format user/repo"
+    required: true
+
+  aws_access_key_id:
+    description: "Optional AWS access key for Bedrock"
+    required: false
+
+  aws_secret_access_key:
+    description: "Optional AWS secret access key for Bedrock"
+    required: false
 
 runs:
   using: "docker"
   image: "Dockerfile"
-  env:
-    GITHUB_TOKEN: ${{ inputs.github_token }}
-    GITHUB_REPO: ${{ inputs.github_repo }}
   args:
     - "--src=${{ inputs.src }}"
     - "--provider=${{ inputs.provider }}"
@@ -43,3 +55,18 @@ runs:
     - "--api_key=${{ inputs.api_key }}"
     - "--api_base=${{ inputs.api_base }}"
     - "--skip-yaml=${{ inputs.skip_yaml }}"
+
+  env:
+    # GitHub issue management
+    GITHUB_TOKEN: ${{ inputs.github_token }}
+    GITHUB_REPO: ${{ inputs.github_repo }}
+
+    # LLM API access
+    DEEPSEEK_API_KEY: ${{ inputs.api_key }}
+    OPENAI_API_KEY: ${{ inputs.api_key }}
+    AWS_ACCESS_KEY_ID: ${{ inputs.aws_access_key_id }}
+    AWS_SECRET_ACCESS_KEY: ${{ inputs.aws_secret_access_key }}
+
+branding:
+  icon: "activity"
+  color: "orange"

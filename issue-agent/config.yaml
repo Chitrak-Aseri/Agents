@@ -1,0 +1,18 @@
+models:
+  - type: openai
+    params:
+      temperature: 0.3
+      model_name: gpt-4o-mini
+      openai_api_key: xxxxxxxxxxxx
+
+  - type: deepseek
+    params:
+      temperature: 0.3
+      model_name: deepseek-chat
+      openai_api_key: ${DEEPSEEK_API_KEY}
+      openai_api_base: https://api.deepseek.com
+
+
+github:
+  GITHUB_TOKEN=xxxxxxxxxxxx
+  GITHUB_REPO=Manav-Khandurie/fastapi-learning

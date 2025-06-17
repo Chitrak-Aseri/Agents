@@ -5,10 +5,13 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class Config:
-    def __init__(self, path="config.yaml"):
-        with open(path, "r") as f:
-            raw = yaml.safe_load(f)
-        self.config = self._substitute_env_vars(raw)
+    def __init__(self, path="issuer-config.yaml", skip_yaml=False):
+        if skip_yaml:
+            self.config = {}
+        else:
+            with open(path, "r") as f:
+                raw = yaml.safe_load(f)
+            self.config = self._substitute_env_vars(raw)
 
     def _substitute_env_vars(self, obj):
         if isinstance(obj, dict):
@@ -21,3 +24,5 @@ class Config:
 
     def get(self, key, default=None):
         return self.config.get(key, default)
+
+    

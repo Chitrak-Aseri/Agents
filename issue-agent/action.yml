@@ -1,0 +1,33 @@
+name: "Issue Agent"
+description: "Runs the autonomous issue agent"
+inputs:
+  src:
+    description: "Source paths to analyze"
+    required: false
+  provider:
+    description: "LLM provider (e.g., deepseek)"
+    required: true
+  model_name:
+    description: "LLM model name"
+    required: true
+  api_key:
+    description: "API key for the LLM"
+    required: true
+  api_base:
+    description: "Optional base URL for the LLM"
+    required: false
+  skip_yaml:
+    description: "Skip YAML generation"
+    required: true
+    default: "True"
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - "--src=${{ inputs.src }}"
+    - "--provider=${{ inputs.provider }}"
+    - "--model_name=${{ inputs.model_name }}"
+    - "--api_key=${{ inputs.api_key }}"
+    - "--api_base=${{ inputs.api_base }}"
+    - "--skip-yaml=${{ inputs.skip_yaml }}"

@@ -17,3 +17,4 @@ RUN pip install -r requirements.txt
 ENV PYTHONPATH=/issue-agent/issue-agent
 
 ENTRYPOINT ["python", "-m", "src.main"]
+

@@ -2,7 +2,7 @@ import os
 import yaml
 from string import Template
 
-def load_config(config_path="config.yaml"):
+def load_config(config_path="issuer-config.yaml"):
     with open(config_path, "r") as f:
         raw = f.read()
 

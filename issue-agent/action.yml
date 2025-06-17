@@ -47,7 +47,7 @@ inputs:
 
 runs:
   using: "docker"
-  image: "Dockerfile"
+  image: "docker://manavkhandurie/issue-agent:v1.0.0"
   args:
     - "--src=${{ inputs.src }}"
     - "--provider=${{ inputs.provider }}"

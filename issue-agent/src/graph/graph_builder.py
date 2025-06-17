@@ -8,6 +8,8 @@ import json
 from src.utils.parser import parse_all_documents
 from src.utils.github import fetch_existing_issues
 from src.agents.generator_agent import run_generator_agent
+from src.core.models import ModelFactory
+from src.utils.config_loader import load_config
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import PromptTemplate
 import os
@@ -23,7 +25,10 @@ class ReviewerOutput(BaseModel):
     ISSUES: Optional[List[Issue]] = None
 
 def run_reviewer_agent(content, issues):
-    llm = ChatOpenAI(model="gpt-4o", api_key=os.environ["OPENAI_API_KEY"])
+
+    config = load_config()
+    factory = ModelFactory(config)
+    llms = factory.get_llms()
     
     parser = PydanticOutputParser(pydantic_object=ReviewerOutput)
 
@@ -57,15 +62,29 @@ def run_reviewer_agent(content, issues):
     )
 
 
-    chain = prompt | llm | parser
+    best_result = {"create_issues": False, "ISSUES": []}
+    max_issues = 0
 
-    try:
-        result = chain.invoke({"content": content, "issues": issues})
-        print(result)
-        return result.model_dump()
-    except Exception as e:
-        print("Error parsing reviewer output:", e)
-        return {"create_issue": False}
+    for llm in llms:
+        print(f"\n🔍 Running reviewer with model: {llm.__class__.__name__}")
+        chain = prompt | llm | parser
+        try:
+            result = chain.invoke({"content": content, "issues": issues})
+            issue_count = len(result.ISSUES) if result.ISSUES else 0
+
+            if issue_count > max_issues:
+                best_result = result.model_dump()
+                max_issues = issue_count
+
+            print(f"✅ Model {llm.__class__.__name__} returned {issue_count} issue(s).")
+
+        except Exception as e:
+            print(f"❌ Error from model {llm.__class__.__name__}:", e)
+
+    return best_result
+
+
+
 
 def run_autonomous_issue_agent(data_folder):
     docs = parse_all_documents(data_folder)

@@ -33,3 +33,6 @@ runs:
     - "--api_key=${{ inputs.api_key }}"
     - "--api_base=${{ inputs.api_base }}"
     - "--skip-yaml=${{ inputs.skip_yaml }}"
+  env:
+    GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+    GITHUB_REPO: ${{ github.repository }}

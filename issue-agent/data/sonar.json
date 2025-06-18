@@ -1,0 +1,845 @@
+{
+  "timestamp": 1750231529.049713,
+  "issues": [
+    {
+      "key": "AZc8VyVBWcOgXtJj0eai",
+      "rule": "python:S125",
+      "severity": "MAJOR",
+      "component": "Manav-Khandurie_fastapi-learning:src/main.py",
+      "project": "Manav-Khandurie_fastapi-learning",
+      "line": 12,
+      "hash": "077f5a274a0c531b28e2a49c8b0bf55d",
+      "textRange": {
+        "startLine": 12,
+        "endLine": 12,
+        "startOffset": 0,
+        "endOffset": 44
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Remove this commented out code.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "Manav-Khandurie@github",
+      "author": "manavkhandurie@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2025-06-04T19:06:53+0000",
+      "updateDate": "2025-06-04T19:06:53+0000",
+      "type": "CODE_SMELL",
+      "organization": "manav-khandurie",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "fastapi-learning"
+    },
+    {
+      "key": "AZc8VySEWcOgXtJj0eaf",
+      "rule": "python:S125",
+      "severity": "MAJOR",
+      "component": "Manav-Khandurie_fastapi-learning:src/utils/tracing.py",
+      "project": "Manav-Khandurie_fastapi-learning",
+      "line": 1,
+      "hash": "265d41b5e6517cf373c1dd74a6f2791a",
+      "textRange": {
+        "startLine": 1,
+        "endLine": 1,
+        "startOffset": 0,
+        "endOffset": 26
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Remove this commented out code.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "Manav-Khandurie@github",
+      "author": "manavkhandurie@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2025-06-04T19:06:53+0000",
+      "updateDate": "2025-06-04T19:06:53+0000",
+      "type": "CODE_SMELL",
+      "organization": "manav-khandurie",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "fastapi-learning"
+    },
+    {
+      "key": "AZc8VySEWcOgXtJj0eag",
+      "rule": "python:S125",
+      "severity": "MAJOR",
+      "component": "Manav-Khandurie_fastapi-learning:src/utils/tracing.py",
+      "project": "Manav-Khandurie_fastapi-learning",
+      "line": 16,
+      "hash": "cbddb8f8e92851d527d3562714d9e466",
+      "textRange": {
+        "startLine": 16,
+        "endLine": 16,
+        "startOffset": 0,
+        "endOffset": 42
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Remove this commented out code.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "Manav-Khandurie@github",
+      "author": "manavkhandurie@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2025-06-04T19:06:53+0000",
+      "updateDate": "2025-06-04T19:06:53+0000",
+      "type": "CODE_SMELL",
+      "organization": "manav-khandurie",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "fastapi-learning"
+    },
+    {
+      "key": "AZc8VySEWcOgXtJj0eah",
+      "rule": "python:S125",
+      "severity": "MAJOR",
+      "component": "Manav-Khandurie_fastapi-learning:src/utils/tracing.py",
+      "project": "Manav-Khandurie_fastapi-learning",
+      "hash": "407cdae67d4cc3c09c95cd7377009777",
+      "textRange": {
+        "startLine": 20,
+        "endLine": 20,
+        "startOffset": 0,
+        "endOffset": 71
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Remove this commented out code.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "Manav-Khandurie@github",
+      "author": "manavkhandurie@gmail.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2025-06-04T19:06:53+0000",
+      "updateDate": "2025-06-10T06:55:46+0000",
+      "closeDate": "2025-06-10T06:55:46+0000",
+      "type": "CODE_SMELL",
+      "organization": "manav-khandurie",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "fastapi-learning"
+    },
+    {
+      "key": "AZc6E1wSKO3PTaNBa2FM",
+      "rule": "ipython:S2208",
+      "severity": "CRITICAL",
+      "component": "Manav-Khandurie_fastapi-learning:notebooks/data/notebook_for_autoflake.ipynb",
+      "project": "Manav-Khandurie_fastapi-learning",
+      "hash": "039b80b8ddac11ced46331e17c16d800",
+      "textRange": {
+        "startLine": 17,
+        "endLine": 17,
+        "startOffset": 5,
+        "endOffset": 26
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Import only needed names or import the module and then use its members.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "103775042+12diya@users.noreply.github.com",
+      "tags": [
+        "bad-practice",
+        "pitfall"
+      ],
+      "creationDate": "2025-06-02T13:35:13+0000",
+      "updateDate": "2025-06-04T19:46:14+0000",
+      "closeDate": "2025-06-04T19:46:14+0000",
+      "type": "CODE_SMELL",
+      "organization": "manav-khandurie",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "fastapi-learning"
+    },
+    {
+      "key": "AZc6E1wSKO3PTaNBa2FN",
+      "rule": "ipython:S1172",
+      "severity": "MAJOR",
+      "component": "Manav-Khandurie_fastapi-learning:notebooks/data/notebook_for_autoflake.ipynb",
+      "project": "Manav-Khandurie_fastapi-learning",
+      "hash": "8b41176ec943b9768b21418e78e25797",
+      "textRange": {
+        "startLine": 24,
+        "endLine": 24,
+        "startOffset": 19,
+        "endOffset": 28
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Remove the unused function parameter \"name\".",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "103775042+12diya@users.noreply.github.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2025-05-30T11:19:39+0000",
+      "updateDate": "2025-06-04T19:46:14+0000",
+      "closeDate": "2025-06-04T19:46:14+0000",
+      "type": "CODE_SMELL",
+      "organization": "manav-khandurie",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "fastapi-learning"
+    },
+    {
+      "key": "AZc6E1wTKO3PTaNBa2FO",
+      "rule": "ipython:S6711",
+      "severity": "MAJOR",
+      "component": "Manav-Khandurie_fastapi-learning:notebooks/data/notebook_for_autoflake.ipynb",
+      "project": "Manav-Khandurie_fastapi-learning",
+      "hash": "05321ac02207310d3e8c80667063701a",
+      "textRange": {
+        "startLine": 44,
+        "endLine": 44,
+        "startOffset": 13,
+        "endOffset": 27
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Use a \"numpy.random.Generator\" here instead of this legacy function.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "103775042+12diya@users.noreply.github.com",
+      "tags": [
+        "data-science",
+        "numpy"
+      ],
+      "creationDate": "2025-05-30T11:19:39+0000",
+      "updateDate": "2025-06-04T19:46:14+0000",
+      "closeDate": "2025-06-04T19:46:14+0000",
+      "type": "CODE_SMELL",
+      "organization": "manav-khandurie",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "fastapi-learning"
+    },
+    {
+      "key": "AZc6E1wMKO3PTaNBa2FL",
+      "rule": "ipython:S5655",
+      "severity": "CRITICAL",
+      "component": "Manav-Khandurie_fastapi-learning:notebooks/data/notebook_starting_with_md.ipynb",
+      "project": "Manav-Khandurie_fastapi-learning",
+      "hash": "0163206667c4dccd07b0ae95f37dee12",
+      "textRange": {
+        "startLine": 59,
+        "endLine": 59,
+        "startOffset": 11,
+        "endOffset": 12
+      },
+      "flows": [
+        {
+          "locations": [
+            {
+              "component": "Manav-Khandurie_fastapi-learning:notebooks/data/notebook_starting_with_md.ipynb",
+              "textRange": {
+                "startLine": 59,
+                "endLine": 59,
+                "startOffset": 11,
+                "endOffset": 12
+              },
+              "msg": "Change this argument; Function \"hello\" expects a different type"
+            },
+            {
+              "component": "Manav-Khandurie_fastapi-learning:notebooks/data/notebook_starting_with_md.ipynb",
+              "textRange": {
+                "startLine": 43,
+                "endLine": 43,
+                "startOffset": 9,
+                "endOffset": 14
+              },
+              "msg": "Function definition"
+            }
+          ]
+        }
+      ],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Change this argument; Function \"hello\" expects a different type",
+      "effort": "20min",
+      "debt": "20min",
+      "author": "103775042+12diya@users.noreply.github.com",
+      "tags": [
+        "suspicious",
+        "typing"
+      ],
+      "creationDate": "2025-05-30T11:19:39+0000",
+      "updateDate": "2025-06-04T19:46:14+0000",
+      "closeDate": "2025-06-04T19:46:14+0000",
+      "type": "CODE_SMELL",
+      "organization": "manav-khandurie",
+      "cleanCodeAttribute": "LOGICAL",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "fastapi-learning"
+    },
+    {
+      "key": "AZc6E1weKO3PTaNBa2FQ",
+      "rule": "ipython:S6711",
+      "severity": "MAJOR",
+      "component": "Manav-Khandurie_fastapi-learning:notebooks/data/notebook_with_separated_imports.ipynb",
+      "project": "Manav-Khandurie_fastapi-learning",
+      "hash": "4dc807eec2ffc11ec654f28f598531fc",
+      "textRange": {
+        "startLine": 22,
+        "endLine": 22,
+        "startOffset": 5,
+        "endOffset": 23
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Use a \"numpy.random.Generator\" here instead of this legacy function.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "103775042+12diya@users.noreply.github.com",
+      "tags": [
+        "data-science",
+        "numpy"
+      ],
+      "creationDate": "2025-05-30T11:19:39+0000",
+      "updateDate": "2025-06-04T19:46:14+0000",
+      "closeDate": "2025-06-04T19:46:14+0000",
+      "type": "CODE_SMELL",
+      "organization": "manav-khandurie",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "fastapi-learning"
+    },
+    {
+      "key": "AZc6E1wYKO3PTaNBa2FP",
+      "rule": "ipython:S1186",
+      "severity": "CRITICAL",
+      "component": "Manav-Khandurie_fastapi-learning:notebooks/data/notebook_with_trailing_semicolon.ipynb",
+      "project": "Manav-Khandurie_fastapi-learning",
+      "hash": "0b9a31a4cba2fdca1396113798207442",
+      "textRange": {
+        "startLine": 20,
+        "endLine": 20,
+        "startOffset": 9,
+        "endOffset": 13
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Add a nested comment explaining why this function is empty, or complete the implementation.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "103775042+12diya@users.noreply.github.com",
+      "tags": [
+        "suspicious"
+      ],
+      "creationDate": "2025-05-30T11:19:39+0000",
+      "updateDate": "2025-06-04T19:46:14+0000",
+      "closeDate": "2025-06-04T19:46:14+0000",
+      "type": "CODE_SMELL",
+      "organization": "manav-khandurie",
+      "cleanCodeAttribute": "COMPLETE",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "fastapi-learning"
+    },
+    {
+      "key": "AZc6E1tpKO3PTaNBa2FK",
+      "rule": "ipython:S2208",
+      "severity": "CRITICAL",
+      "component": "Manav-Khandurie_fastapi-learning:notebooks/data/starting_with_comment.ipynb",
+      "project": "Manav-Khandurie_fastapi-learning",
+      "hash": "91cca84c8ea36e13903a01ba1b422050",
+      "textRange": {
+        "startLine": 31,
+        "endLine": 31,
+        "startOffset": 5,
+        "endOffset": 32
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Import only needed names or import the module and then use its members.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "103775042+12diya@users.noreply.github.com",
+      "tags": [
+        "bad-practice",
+        "pitfall"
+      ],
+      "creationDate": "2025-05-30T11:19:39+0000",
+      "updateDate": "2025-06-04T19:46:14+0000",
+      "closeDate": "2025-06-04T19:46:14+0000",
+      "type": "CODE_SMELL",
+      "organization": "manav-khandurie",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "HIGH"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "fastapi-learning"
+    },
+    {
+      "key": "AZc6E1pvKO3PTaNBa2FJ",
+      "rule": "python:S125",
+      "severity": "MAJOR",
+      "component": "Manav-Khandurie_fastapi-learning:src/utils/logger.py",
+      "project": "Manav-Khandurie_fastapi-learning",
+      "line": 30,
+      "hash": "39532911e844244d8b1db9129f76ec10",
+      "textRange": {
+        "startLine": 30,
+        "endLine": 30,
+        "startOffset": 0,
+        "endOffset": 42
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Remove this commented out code.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "manav.khandurie@takeda.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2025-05-26T08:00:20+0000",
+      "updateDate": "2025-06-04T08:31:05+0000",
+      "type": "CODE_SMELL",
+      "organization": "manav-khandurie",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "fastapi-learning"
+    },
+    {
+      "key": "AZeBdk0UCxhEcrjDZCGa",
+      "rule": "python:S7503",
+      "severity": "MINOR",
+      "component": "Manav-Khandurie_fastapi-learning:src/graphql/context.py",
+      "project": "Manav-Khandurie_fastapi-learning",
+      "line": 29,
+      "hash": "9b421329d3e1fcd4d6a5fe757acdfae2",
+      "textRange": {
+        "startLine": 29,
+        "endLine": 29,
+        "startOffset": 10,
+        "endOffset": 21
+      },
+      "flows": [
+        {
+          "locations": [
+            {
+              "component": "Manav-Khandurie_fastapi-learning:src/graphql/context.py",
+              "textRange": {
+                "startLine": 29,
+                "endLine": 29,
+                "startOffset": 0,
+                "endOffset": 5
+              },
+              "msg": "This function is async."
+            }
+          ]
+        }
+      ],
+      "status": "OPEN",
+      "message": "Use asynchronous features in this function or remove the `async` keyword.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "",
+      "tags": [
+        "async"
+      ],
+      "creationDate": "2025-05-22T10:13:04+0000",
+      "updateDate": "2025-06-18T05:14:36+0000",
+      "type": "CODE_SMELL",
+      "organization": "manav-khandurie",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        },
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "fastapi-learning"
+    },
+    {
+      "key": "AZc6E1wxKO3PTaNBa2FT",
+      "rule": "docker:S7031",
+      "severity": "MINOR",
+      "component": "Manav-Khandurie_fastapi-learning:backup.Dockerfile",
+      "project": "Manav-Khandurie_fastapi-learning",
+      "hash": "d4b97294e0e1382f388f8b8635704643",
+      "textRange": {
+        "startLine": 7,
+        "endLine": 7,
+        "startOffset": 0,
+        "endOffset": 3
+      },
+      "flows": [
+        {
+          "locations": [
+            {
+              "component": "Manav-Khandurie_fastapi-learning:backup.Dockerfile",
+              "textRange": {
+                "startLine": 8,
+                "endLine": 8,
+                "startOffset": 0,
+                "endOffset": 3
+              },
+              "msg": "consecutive RUN instruction"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "Manav-Khandurie_fastapi-learning:backup.Dockerfile",
+              "textRange": {
+                "startLine": 9,
+                "endLine": 9,
+                "startOffset": 0,
+                "endOffset": 3
+              },
+              "msg": "consecutive RUN instruction"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "Manav-Khandurie_fastapi-learning:backup.Dockerfile",
+              "textRange": {
+                "startLine": 10,
+                "endLine": 10,
+                "startOffset": 0,
+                "endOffset": 3
+              },
+              "msg": "consecutive RUN instruction"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "Manav-Khandurie_fastapi-learning:backup.Dockerfile",
+              "textRange": {
+                "startLine": 11,
+                "endLine": 11,
+                "startOffset": 0,
+                "endOffset": 3
+              },
+              "msg": "consecutive RUN instruction"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "Manav-Khandurie_fastapi-learning:backup.Dockerfile",
+              "textRange": {
+                "startLine": 12,
+                "endLine": 12,
+                "startOffset": 0,
+                "endOffset": 3
+              },
+              "msg": "consecutive RUN instruction"
+            }
+          ]
+        },
+        {
+          "locations": [
+            {
+              "component": "Manav-Khandurie_fastapi-learning:backup.Dockerfile",
+              "textRange": {
+                "startLine": 13,
+                "endLine": 13,
+                "startOffset": 0,
+                "endOffset": 3
+              },
+              "msg": "consecutive RUN instruction"
+            }
+          ]
+        }
+      ],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Merge this RUN instruction with the consecutive ones.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "manav.khandurie@takeda.com",
+      "tags": [],
+      "creationDate": "2025-05-21T16:31:44+0000",
+      "updateDate": "2025-06-04T19:46:14+0000",
+      "closeDate": "2025-06-04T19:46:14+0000",
+      "type": "CODE_SMELL",
+      "organization": "manav-khandurie",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "LOW"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "fastapi-learning"
+    },
+    {
+      "key": "AZc6E1wqKO3PTaNBa2FS",
+      "rule": "python:S125",
+      "severity": "MAJOR",
+      "component": "Manav-Khandurie_fastapi-learning:tests/e2e/test_crud_flow.py",
+      "project": "Manav-Khandurie_fastapi-learning",
+      "hash": "78b3d7359fd0dc1c5ade2b22d67389d9",
+      "textRange": {
+        "startLine": 20,
+        "endLine": 20,
+        "startOffset": 4,
+        "endOffset": 57
+      },
+      "flows": [],
+      "resolution": "FIXED",
+      "status": "CLOSED",
+      "message": "Remove this commented out code.",
+      "effort": "5min",
+      "debt": "5min",
+      "author": "manav.khandurie@takeda.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2025-05-20T10:18:28+0000",
+      "updateDate": "2025-06-04T19:46:14+0000",
+      "closeDate": "2025-06-04T19:46:14+0000",
+      "type": "CODE_SMELL",
+      "organization": "manav-khandurie",
+      "cleanCodeAttribute": "CLEAR",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "FIXED",
+      "projectName": "fastapi-learning"
+    },
+    {
+      "key": "AZc6E1wlKO3PTaNBa2FR",
+      "rule": "secrets:S6706",
+      "severity": "BLOCKER",
+      "component": "Manav-Khandurie_fastapi-learning:tests/unit/test_jwt_handler.py",
+      "project": "Manav-Khandurie_fastapi-learning",
+      "line": 25,
+      "hash": "5f0f0d828e33fa8f8f7a7f6bc36ecd64",
+      "textRange": {
+        "startLine": 25,
+        "endLine": 25,
+        "startOffset": 26,
+        "endOffset": 53
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Make sure this private key gets revoked, changed, and removed from the code.",
+      "effort": "30min",
+      "debt": "30min",
+      "author": "manav.khandurie@takeda.com",
+      "tags": [
+        "cwe"
+      ],
+      "creationDate": "2025-05-20T06:39:35+0000",
+      "updateDate": "2025-06-04T08:31:05+0000",
+      "type": "VULNERABILITY",
+      "organization": "manav-khandurie",
+      "cleanCodeAttribute": "TRUSTWORTHY",
+      "cleanCodeAttributeCategory": "RESPONSIBLE",
+      "impacts": [
+        {
+          "softwareQuality": "SECURITY",
+          "severity": "BLOCKER"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "fastapi-learning"
+    }
+  ],
+  "quality_gate": {
+    "status": "OK",
+    "conditions": [
+      {
+        "status": "OK",
+        "metricKey": "new_reliability_rating",
+        "comparator": "GT",
+        "periodIndex": 1,
+        "errorThreshold": "1",
+        "actualValue": "1"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_security_rating",
+        "comparator": "GT",
+        "periodIndex": 1,
+        "errorThreshold": "1",
+        "actualValue": "1"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_maintainability_rating",
+        "comparator": "GT",
+        "periodIndex": 1,
+        "errorThreshold": "1",
+        "actualValue": "1"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_coverage",
+        "comparator": "LT",
+        "periodIndex": 1,
+        "errorThreshold": "80",
+        "actualValue": "84.61538461538461"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_duplicated_lines_density",
+        "comparator": "GT",
+        "periodIndex": 1,
+        "errorThreshold": "3",
+        "actualValue": "0.0"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_security_hotspots_reviewed",
+        "comparator": "LT",
+        "periodIndex": 1,
+        "errorThreshold": "100",
+        "actualValue": "100.0"
+      }
+    ],
+    "periods": [
+      {
+        "index": 1,
+        "mode": "previous_version",
+        "date": "2025-06-05T13:28:34+0000"
+      }
+    ],
+    "ignoredConditions": false
+  },
+  "metrics": [
+    {
+      "metric": "coverage",
+      "value": "83.5",
+      "bestValue": false
+    },
+    {
+      "metric": "complexity",
+      "value": "40"
+    },
+    {
+      "metric": "duplicated_lines_density",
+      "value": "0.0",
+      "bestValue": true
+    },
+    {
+      "metric": "ncloc",
+      "value": "409"
+    },
+    {
+      "metric": "line_coverage",
+      "value": "83.5",
+      "bestValue": false
+    }
+  ]
+}

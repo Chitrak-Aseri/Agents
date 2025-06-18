@@ -9,12 +9,14 @@ from src.utils.parser import summarize_sonar_metrics
 
 class Issue(BaseModel):
     """Represents a GitHub issue with title and body content."""
+
     title: str
     body: str
 
 
 class ReviewerOutput(BaseModel):
     """Output model for the reviewer agent containing issue creation decision and list of issues."""
+
     create_issues: bool
     ISSUES: Optional[List[Issue]] = None
 

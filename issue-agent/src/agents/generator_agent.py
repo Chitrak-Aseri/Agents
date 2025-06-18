@@ -5,7 +5,7 @@ from github import Github
 
 def run_generator_agent(data):
     """Processes input data and creates GitHub issues based on quality metrics.
-    
+
     Args:
         data (dict): Contains issue generation configuration and metrics data.
             Expected keys:

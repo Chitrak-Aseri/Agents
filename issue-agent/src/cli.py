@@ -4,7 +4,7 @@ import os
 
 def parse_args():
     """Parse command line arguments for the script.
-    
+
     Returns:
         argparse.Namespace: Parsed arguments with the following attributes:
             --src (str): Source directory path (default: "data")

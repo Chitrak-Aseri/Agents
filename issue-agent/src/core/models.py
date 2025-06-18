@@ -4,21 +4,22 @@ from langchain_openai import ChatOpenAI
 
 class ModelFactory:
     """Factory class for creating and managing LLM (Large Language Model) instances.
-    
+
     Args:
         config (dict): Configuration dictionary containing either 'model' (single model)
                        or 'models' (multiple models) configuration.
     """
+
     def __init__(self, config):
         self.single_model_config = config.get("model")
         self.multi_model_config = config.get("models")
 
     def get_llms(self):
         """Create and return LLM instances based on configuration.
-        
+
         Returns:
             list: List of initialized LLM instances.
-            
+
         Raises:
             ValueError: If no valid model configuration is found.
         """
@@ -46,14 +47,14 @@ class ModelFactory:
 
     def _create_model(self, model_type, params):
         """Internal method to create a specific model instance.
-        
+
         Args:
             model_type (str): Type of model to create ('openai' or 'deepseek').
             params (dict): Parameters to pass to the model constructor.
-            
+
         Returns:
             object: Initialized model instance.
-            
+
         Raises:
             ValueError: If an unsupported model type is provided.
         """

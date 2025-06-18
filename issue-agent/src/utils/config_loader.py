@@ -8,7 +8,7 @@ def load_config(config_path="issuer-config.yaml"):
     """Load and parse a YAML configuration file with environment variable substitution.
 
     Args:
-        config_path (str, optional): Path to the YAML configuration file. 
+        config_path (str, optional): Path to the YAML configuration file.
             Defaults to "issuer-config.yaml".
 
     Returns:

@@ -6,7 +6,7 @@ from src.graph.graph_builder import run_autonomous_issue_agent
 
 def main():
     """Main entry point for the autonomous issue agent program.
-    
+
     Parses command line arguments, initializes configuration, creates LLM instance,
     and runs the autonomous issue agent with the provided parameters.
     """

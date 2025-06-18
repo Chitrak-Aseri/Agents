@@ -27,5 +27,11 @@ TOOLS = [
         name="return_json",
         func=return_structured_output,
         description="Return the final structured output as JSON when you're done analyzing the documents."
-    )
+    ),
+    Tool.from_function(
+    name="get_sonar_quality_metrics",
+    func=parse_sonar_report,
+    description="Returns structured SonarQube quality metrics"
+)
+
 ]

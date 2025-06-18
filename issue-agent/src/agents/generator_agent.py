@@ -10,7 +10,27 @@ def run_generator_agent(data):
         print("No new issues needed.")
         return
 
-    issues = data.get("ISSUES", [])
+    issues = data.get("ISSUES", []) or []
+
+    # 📊 Structured SonarQube quality check
+    sonar_data = data.get("sonar", {})
+    coverage = next(
+        (m.get("value") for m in sonar_data.get("metrics", []) if m.get("metric") == "coverage"),
+        None
+    )
+    if coverage:
+        try:
+            coverage_float = float(coverage)
+            if coverage_float < 80:
+                already_exists = any("Low Test Coverage" in issue.get("title", "") for issue in issues)
+                if not already_exists:
+                    issues.append({
+                        "title": "Low Test Coverage",
+                        "body": f"Test coverage is below threshold: {coverage_float}%. Please improve test coverage to at least 80%."
+                    })
+        except ValueError:
+            print("⚠️ Could not convert coverage value to float:", coverage)
+
     if not issues:
         print("No issue details found.")
         return

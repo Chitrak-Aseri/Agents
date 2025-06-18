@@ -3,6 +3,17 @@ import os
 
 
 def parse_args():
+    """Parse command line arguments for the script.
+    
+    Returns:
+        argparse.Namespace: Parsed arguments with the following attributes:
+            --src (str): Source directory path (default: "data")
+            --provider (str): Required provider name
+            --model_name (str): Required model name
+            --api_key (str): Required API key
+            --api_base (str): Optional API base URL (default: None)
+            --skip-yaml (bool): Whether to skip YAML processing (default: True)
+    """
     parser = argparse.ArgumentParser()
     parser.add_argument("--src", type=str, default="data")
     parser.add_argument("--provider", type=str, required=True)

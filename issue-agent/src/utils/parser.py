@@ -45,6 +45,16 @@ def summarize_sonar_metrics(sonar: dict) -> str:
 
 
 def parse_sonar_json(file_path: str) -> dict:
+    """Parse SonarQube JSON report file into structured data.
+    
+    Args:
+        file_path: Path to sonar.json file
+        
+    Returns:
+        Dictionary containing:
+        - 'text': Formatted issue details (or error message if no issues)
+        - 'data': Raw parsed JSON data
+    """
     if not os.path.exists(file_path):
         return {"text": "No sonar.json found.", "data": {}}
 
@@ -69,6 +79,16 @@ def parse_sonar_json(file_path: str) -> dict:
 
 
 def parse_all_documents(folder_path):
+    """Parse all documents in a folder and combine their contents.
+    
+    Args:
+        folder_path: Path to directory containing various report files
+        
+    Returns:
+        Dictionary containing:
+        - 'llm_text': Combined content of all parsed files
+        - 'sonar': Parsed SonarQube data (if sonar.json exists)
+    """
     combined_content = ""
     # Parse individual files
     for file in os.listdir(folder_path):

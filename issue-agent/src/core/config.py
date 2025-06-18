@@ -1,8 +1,10 @@
 import os
+
 import yaml
 from dotenv import load_dotenv
 
 load_dotenv()
+
 
 class Config:
     def __init__(self, path="issuer-config.yaml", skip_yaml=False):
@@ -24,5 +26,3 @@ class Config:
 
     def get(self, key, default=None):
         return self.config.get(key, default)
-
-    

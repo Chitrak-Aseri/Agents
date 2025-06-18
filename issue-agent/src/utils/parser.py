@@ -1,29 +1,47 @@
-import os
 import json
-import xmltodict
+import os
 import time
 
+import xmltodict
 
-def parse_sonar_report(report_dir: str = "sonar-report") -> dict:
-    """Parses SonarQube report files and returns a merged structured output."""
 
-    def load_json(filename):
-        path = os.path.join(report_dir, filename)
-        if not os.path.exists(path):
-            return {}
-        with open(path, "r", encoding="utf-8") as f:
-            return json.load(f)
+def summarize_sonar_metrics(sonar: dict) -> str:
+    """Extract key insights from structured sonar report for reviewer prompt."""
+    if not sonar:
+        return ""
 
-    issues_data = load_json("issues.json")
-    quality_gate_data = load_json("quality_gate.json")
-    measures_data = load_json("measures.json")
+    summary = []
 
-    return {
-        "timestamp": int(time.time()),
-        "issues": issues_data.get("issues", []),
-        "quality_gate": quality_gate_data.get("projectStatus", {}),
-        "metrics": measures_data.get("component", {}).get("measures", [])
-    } 
+    # Quality Gate
+    gate = sonar.get("quality_gate", {})
+    status = gate.get("status", "UNKNOWN")
+    conditions = gate.get("conditions", [])
+    summary.append(f"Quality Gate Status: **{status}**")
+    for cond in conditions:
+        summary.append(
+            f"- {cond.get('metricKey')}: {cond.get('actual')} "
+            f"(threshold: {cond.get('errorThreshold')}) => {cond.get('status')}"
+        )
+
+    # Metrics
+    metric_map = {
+        m["metric"]: m["value"] for m in sonar.get("metrics", []) if "value" in m
+    }
+    coverage = metric_map.get("coverage")
+    complexity = metric_map.get("complexity")
+    bugs = metric_map.get("bugs")
+    vulnerabilities = metric_map.get("vulnerabilities")
+
+    if coverage:
+        summary.append(f"- Coverage: {coverage}%")
+    if complexity:
+        summary.append(f"- Complexity: {complexity}")
+    if bugs:
+        summary.append(f"- Bugs: {bugs}")
+    if vulnerabilities:
+        summary.append(f"- Vulnerabilities: {vulnerabilities}")
+
+    return "\n".join(summary)
 
 
 def parse_sonar_json(file_path: str) -> dict:
@@ -52,19 +70,6 @@ def parse_sonar_json(file_path: str) -> dict:
 
 def parse_all_documents(folder_path):
     combined_content = ""
-    sonar_data = {}
-
-    # Parse SonarQube report folder if exists
-    sonar_report_path = os.path.join(folder_path, "sonar-report")
-    if os.path.exists(sonar_report_path):
-        try:
-            structured = parse_sonar_report(sonar_report_path)
-            sonar_data = structured  # set sonar_data for output
-            combined_content += "\n\n### 📊 SonarQube Summary:\n"
-            combined_content += json.dumps(structured, indent=2)
-        except Exception as e:
-            combined_content += f"\n\n### SonarQube Summary Error: {e}\n"
-
     # Parse individual files
     for file in os.listdir(folder_path):
         path = os.path.join(folder_path, file)
@@ -73,6 +78,16 @@ def parse_all_documents(folder_path):
             sonar_parsed = parse_sonar_json(path)
             sonar_data = sonar_parsed["data"]  # override sonar data
             combined_content += "\n\n### SonarQube Issues:\n" + sonar_parsed["text"]
+            print(
+                "****************************SONAR REPORT************************************"
+            )
+            print("Parsed sonar.json successfully.")
+            print(
+                "Sonar data:", str(sonar_data)[:1000]
+            )  # Print only the first 1000 characters for brevity
+            print(
+                "****************************SONAR REPORT************************************"
+            )
 
         elif file.endswith(".xml"):
             with open(path, "r", encoding="utf-8") as f:
@@ -87,7 +102,4 @@ def parse_all_documents(folder_path):
             with open(path, "r", encoding="utf-8") as f:
                 combined_content += "\n\n### Text Content:\n" + f.read()
 
-    return {
-        "llm_text": combined_content.strip(),
-        "sonar": sonar_data
-    }
+    return {"llm_text": combined_content.strip(), "sonar": sonar_data}

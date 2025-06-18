@@ -1,7 +1,10 @@
-from langchain_core.prompts import PromptTemplate
+from typing import List, Optional
+
 from langchain_core.output_parsers import PydanticOutputParser
+from langchain_core.prompts import PromptTemplate
 from pydantic import BaseModel
-from typing import Optional, List
+
+from src.utils.parser import summarize_sonar_metrics
 
 
 class Issue(BaseModel):
@@ -12,43 +15,6 @@ class Issue(BaseModel):
 class ReviewerOutput(BaseModel):
     create_issues: bool
     ISSUES: Optional[List[Issue]] = None
-
-
-def summarize_sonar_metrics(sonar: dict) -> str:
-    """Extract key insights from structured sonar report for reviewer prompt."""
-    if not sonar:
-        return ""
-
-    summary = []
-
-    # Quality Gate
-    gate = sonar.get("quality_gate", {})
-    status = gate.get("status", "UNKNOWN")
-    conditions = gate.get("conditions", [])
-    summary.append(f"Quality Gate Status: **{status}**")
-    for cond in conditions:
-        summary.append(
-            f"- {cond.get('metricKey')}: {cond.get('actual')} "
-            f"(threshold: {cond.get('errorThreshold')}) => {cond.get('status')}"
-        )
-
-    # Metrics
-    metric_map = {m["metric"]: m["value"] for m in sonar.get("metrics", []) if "value" in m}
-    coverage = metric_map.get("coverage")
-    complexity = metric_map.get("complexity")
-    bugs = metric_map.get("bugs")
-    vulnerabilities = metric_map.get("vulnerabilities")
-
-    if coverage:
-        summary.append(f"- Coverage: {coverage}%")
-    if complexity:
-        summary.append(f"- Complexity: {complexity}")
-    if bugs:
-        summary.append(f"- Bugs: {bugs}")
-    if vulnerabilities:
-        summary.append(f"- Vulnerabilities: {vulnerabilities}")
-
-    return "\n".join(summary)
 
 
 def run_reviewer_agent(*, parsed_input: dict, issues: str, llms: list):
@@ -82,6 +48,10 @@ Your objective is to analyze the provided documents and the list of currently op
 3. Avoid creating duplicate or overlapping issues — each suggested issue must represent a **unique and clearly distinct concern**.
 4. Group similar observations under a single cohesive issue where applicable to reduce noise.
 5. Ensure each new issue has a **concise, descriptive title** and a **clear, actionable description**.
+6. Avoid vague or generic issues; be specific about the problem and its context.
+7. If no new issues are needed, return `create_issues=False` and an empty list for `ISSUES`.
+8. If new issues are needed, return `create_issues=True` and list all new issues under the key `ISSUES`.
+9. Issues must always be unique and not overlap with existing issues.
 
 Given the following documents and metrics:
 {content}
@@ -89,7 +59,7 @@ Given the following documents and metrics:
 And the following current GitHub issues:
 {issues}
 
-Decide whether new GitHub issues should be created.
+Decide whether new GitHub issues should be created & MAKE SURE YOU DONT CREATE ANY REDUDANT/SIMILAR ISSUES IF THE ISSUES ARE ALREDY COVERED.
 
 If yes, return create_issues=True and list all new issues under the key ISSUES.
 
@@ -106,10 +76,7 @@ If yes, return create_issues=True and list all new issues under the key ISSUES.
         print(f"\n🔍 Running reviewer with model: {llm.__class__.__name__}")
         chain = prompt | llm | parser
         try:
-            result = chain.invoke({
-                "content": full_content,
-                "issues": issues
-            })
+            result = chain.invoke({"content": full_content, "issues": issues})
             issue_count = len(result.ISSUES) if result.ISSUES else 0
 
             if issue_count > max_issues:

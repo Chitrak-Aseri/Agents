@@ -1,37 +1,41 @@
 from langchain.agents import Tool
-from src.utils.parser import parse_all_documents
+
 from src.utils.github import fetch_existing_issues
+from src.utils.parser import parse_all_documents
+
 
 def _parse_docs(_: str) -> str:
     docs = parse_all_documents("data")
     return "\n".join(docs)
 
+
 def _fetch_issues(_: str) -> str:
     return "\n".join(fetch_existing_issues())
 
+
 def return_structured_output(data: str) -> str:
     return data  # Return exactly what LLM gives us (ideally valid JSON)
+
 
 TOOLS = [
     Tool.from_function(
         name="parse_all_documents",
         func=_parse_docs,
-        description="Parse all documents from the 'data' folder including JSON, XML, and TXT"
+        description="Parse all documents from the 'data' folder including JSON, XML, and TXT",
     ),
     Tool.from_function(
         name="fetch_existing_issues",
         func=_fetch_issues,
-        description="Fetch all currently open GitHub issues from the configured repository"
+        description="Fetch all currently open GitHub issues from the configured repository",
     ),
     Tool.from_function(
         name="return_json",
         func=return_structured_output,
-        description="Return the final structured output as JSON when you're done analyzing the documents."
+        description="Return the final structured output as JSON when you're done analyzing the documents.",
     ),
-    Tool.from_function(
-    name="get_sonar_quality_metrics",
-    func=parse_sonar_report,
-    description="Returns structured SonarQube quality metrics"
-)
-
+    # Tool.from_function(
+    # name="get_sonar_quality_metrics",
+    # func=parse_sonar_report,
+    # description="Returns structured SonarQube quality metrics"
+    # )
 ]

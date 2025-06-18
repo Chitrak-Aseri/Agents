@@ -1,7 +1,10 @@
-from github import Github
 import os
+
 from dotenv import load_dotenv
+from github import Github
+
 load_dotenv()
+
 
 def fetch_existing_issues():
     gh = Github(os.environ["GITHUB_TOKEN"])

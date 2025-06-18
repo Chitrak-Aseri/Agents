@@ -1,4 +1,4 @@
-name: 🤖 AI Code Comment Bot
+name: 🤖 AI Code Comment Bot - ISSUE AGENT
 on:
   workflow_dispatch:
 
@@ -11,7 +11,7 @@ jobs:
       BOT_NAME: "code-comment-bot"
       BOT_EMAIL: "bot@cleocog.xyz"
       BOT_BRANCH: "auto/comment-update"
-      PR_TITLE: "🤖 Add Code Comments"
+      PR_TITLE: "🤖 Add Code Comments- ISSUE AGENT"
       PR_BODY: "This PR includes auto-generated code comments."
 
     steps:
@@ -21,10 +21,10 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
-      - name: Run Code Comment Bot for code-comment-review-agent
+      - name: Run Code Comment Bot for issue Agent
         uses: Manav-Khandurie/auto-code-commenter@v1.4.0
         with:
-          src: "./code-comment-review-agent/src"
+          src: "./issue-agent/src"
           provider: "deepseek"
           model_name: "deepseek-chat"
           api_key: ${{ secrets.DEEPSEEK_API_KEY }}

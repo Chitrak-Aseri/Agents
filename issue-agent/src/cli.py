@@ -1,6 +1,7 @@
 import argparse
 import os
 
+
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--src", type=str, default="data")

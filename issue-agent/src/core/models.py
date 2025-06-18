@@ -1,6 +1,5 @@
-from langchain_openai import ChatOpenAI
 from langchain_deepseek import ChatDeepSeek
-
+from langchain_openai import ChatOpenAI
 
 
 class ModelFactory:
@@ -25,7 +24,9 @@ class ModelFactory:
             instances.append(self._create_model(model_type, params))
 
         else:
-            raise ValueError("No valid model configuration found. Please define `model:` or `models:` in your YAML.")
+            raise ValueError(
+                "No valid model configuration found. Please define `model:` or `models:` in your YAML."
+            )
 
         return instances
 

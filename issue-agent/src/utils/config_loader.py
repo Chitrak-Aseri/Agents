@@ -1,6 +1,8 @@
 import os
-import yaml
 from string import Template
+
+import yaml
+
 
 def load_config(config_path="issuer-config.yaml"):
     with open(config_path, "r") as f:

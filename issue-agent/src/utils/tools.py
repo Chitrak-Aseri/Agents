@@ -5,15 +5,39 @@ from src.utils.parser import parse_all_documents
 
 
 def _parse_docs(_: str) -> str:
+    """Parse all documents from the 'data' folder and return as concatenated string.
+    
+    Args:
+        _: Unused input parameter (required by Tool interface)
+    
+    Returns:
+        str: All parsed documents joined by newlines
+    """
     docs = parse_all_documents("data")
     return "\n".join(docs)
 
 
 def _fetch_issues(_: str) -> str:
+    """Fetch all open GitHub issues and return as concatenated string.
+    
+    Args:
+        _: Unused input parameter (required by Tool interface)
+    
+    Returns:
+        str: All open issues joined by newlines
+    """
     return "\n".join(fetch_existing_issues())
 
 
 def return_structured_output(data: str) -> str:
+    """Return input data unchanged (intended for JSON output from LLM).
+    
+    Args:
+        data: The input string (typically JSON) to return
+        
+    Returns:
+        str: The unmodified input data
+    """
     return data  # Return exactly what LLM gives us (ideally valid JSON)
 
 

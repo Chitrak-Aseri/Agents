@@ -8,24 +8,33 @@ from src.utils.parser import summarize_sonar_metrics
 
 
 class Issue(BaseModel):
+    """Represents a GitHub issue with title and body content."""
     title: str
     body: str
 
 
 class ReviewerOutput(BaseModel):
+    """Output model for the reviewer agent containing issue creation decision and list of issues."""
     create_issues: bool
     ISSUES: Optional[List[Issue]] = None
 
 
 def run_reviewer_agent(*, parsed_input: dict, issues: str, llms: list):
     """
-    parsed_input: dict with keys:
-        - llm_text: combined document text
-        - sonar: structured sonar report (dict)
-    issues: current GitHub issues (str)
-    llms: list of LLM objects
-    """
+    Runs the reviewer agent to determine if new GitHub issues should be created.
 
+    Args:
+        parsed_input: Dictionary containing:
+            - llm_text: Combined document text
+            - sonar: Structured SonarQube report (dict)
+        issues: Current GitHub issues as a string
+        llms: List of LLM objects to use for review
+
+    Returns:
+        dict: Best result from all LLMs containing:
+            - create_issues: Boolean indicating if issues should be created
+            - ISSUES: List of Issue objects (empty if create_issues=False)
+    """
     parser = PydanticOutputParser(pydantic_object=ReviewerOutput)
 
     # Extract parts from parsed input

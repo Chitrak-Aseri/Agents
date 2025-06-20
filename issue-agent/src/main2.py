@@ -6,7 +6,7 @@ from src.graph.langgraph_runner import build_multi_agent_issue_graph
 def main():
     # tools = [summarize_sonar, fetch_existing_issues, create_issue]
     tools = [fetch_existing_issues, summarize_sonar, create_issue]
-    llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+    llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.5)
 
     graph = build_multi_agent_issue_graph(llm, tools)
 

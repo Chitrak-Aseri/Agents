@@ -100,3 +100,17 @@ If yes, return create_issues=True and list all new issues under the key ISSUES.
             print(f"❌ Error from model {llm.__class__.__name__}:", e)
 
     return best_result
+
+
+
+from langchain.agents import initialize_agent
+from langchain.agents.agent_types import AgentType
+
+def get_reviewer_agent(llm, tools):
+    return initialize_agent(
+        tools=tools,
+        llm=llm,
+        agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
+        verbose=True,
+        handle_parsing_errors=True,
+    )

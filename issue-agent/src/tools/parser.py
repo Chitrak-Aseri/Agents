@@ -5,6 +5,7 @@ import time
 import xmltodict
 from langchain_core.tools import tool
 
+
 def parse_sonar_json(file_path: str) -> dict:
     """Parse SonarQube JSON report file into structured data.
 
@@ -37,6 +38,8 @@ def parse_sonar_json(file_path: str) -> dict:
         )
 
     return {"text": "\n\n".join(formatted_issues), "data": data}
+
+
 @tool
 def parse_all_documents(folder_path: str = "data") -> dict:
     """Parse all documents in a folder and combine their contents.

@@ -6,7 +6,7 @@ from IPython.display import Image, display
 from langchain_core.runnables.graph import MermaidDrawMethod
 from langchain_openai import ChatOpenAI
 
-from src.graph.langgraph_runner import build_multi_agent_issue_graph
+from src.graph.langgraph_runner import build_multi_agent_issue_graph, get_graph_dot_string
 from src.tools.codebase_fetcher import fetch_codebase
 from src.tools.github_issues import fetch_existing_issues
 from src.tools.issue_creator import create_issue
@@ -48,14 +48,15 @@ def main():
     ]  # Just FYI; not actually used in your `generator_node`
 
     llm = ChatOpenAI(
-        model_name="deepseek-chat", 
+        model_name="deepseek-chat",
         temperature=0.5,
-        openai_api_base="https://api.deepseek.com/v1", 
-        openai_api_key=os.environ["DEEPSEEK_API_KEY"]
+        openai_api_base="https://api.deepseek.com/v1",
+        openai_api_key=os.environ["DEEPSEEK_API_KEY"],
     )
     builder = build_multi_agent_issue_graph(llm, reviewer_tools, compile_graph=False)
     graph = build_multi_agent_issue_graph(llm, reviewer_tools, compile_graph=True)
-
+    # with open("graph.dot", "w") as f:
+    #     f.write(get_graph_dot_string(llm, tools))
     visualize_graph(graph)
     parsed = parse_all_documents("data")
     full_prompt = f"""

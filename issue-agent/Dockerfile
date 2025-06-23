@@ -16,5 +16,5 @@ RUN pip install -r requirements.txt
 # Set the working directory to ensure Python finds the `src` module
 ENV PYTHONPATH=/issue-agent/issue-agent
 
-ENTRYPOINT ["python", "-m", "src.main"]
+ENTRYPOINT ["python", "-m", "src.main2"]
 

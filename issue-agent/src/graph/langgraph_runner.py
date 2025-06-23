@@ -122,10 +122,12 @@ def suggestion_node(llm):
             issue = repo.get_issue(number=issue_num)
             title = issue_obj.get("title", "")
             body = issue_obj.get("body", "")
+            full_body = f"{body}\n\n---\n_This issue was generated automatically by `issue-agent [Suggestions-sub-agent]`._"
+
             response = generate_contextual_suggestion(
                 llm,
                 code=code_dict,  # Limit to ~1200 chars for clarity
-                issue_body=body
+                issue_body=full_body
             )
             issue.create_comment(response if isinstance(response, str) else response.content)
             print(f"✅ Commented on #{issue_num} with LLM suggestion.")

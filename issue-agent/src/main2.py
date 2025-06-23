@@ -5,7 +5,9 @@ from IPython.display import Image, display
 # from langgraph.graph.visualize import draw_mermaid
 from langchain_core.runnables.graph import MermaidDrawMethod
 from langchain_openai import ChatOpenAI
-
+from src.cli import parse_args
+from src.core.config import Config
+from src.core.models import ModelFactory
 from src.graph.langgraph_runner import build_multi_agent_issue_graph, get_graph_dot_string
 from src.tools.codebase_fetcher import fetch_codebase
 from src.tools.github_issues import fetch_existing_issues
@@ -24,6 +26,25 @@ def visualize_graph(graph):
 
 
 def main():
+    args = parse_args()
+
+    # Initialize configuration with optional YAML skipping
+    config = Config(skip_yaml=args.skip_yaml)
+    # Set up model configuration from command line arguments
+    config.config["models"] = [
+        {
+            "type": args.provider,
+            "params": {
+                "model_name": args.model_name,
+                "openai_api_key": args.api_key,
+                "openai_api_base": args.api_base,
+            },
+        }
+    ]
+    # Get LLM instance from ModelFactory
+    llm = ModelFactory(config).get_llms()[0]
+    print(isinstance(llm,ChatOpenAI))
+    print("Using LLM:", llm)
     tools = [
         fetch_existing_issues,
         parse_sonar_metrics,
@@ -53,11 +74,11 @@ def main():
     #     openai_api_base="https://api.deepseek.com/v1",
     #     openai_api_key=os.environ["DEEPSEEK_API_KEY"],
     # )
-    llm = ChatOpenAI(
-        model_name="gpt-4o-mini",
-        temperature=0.5,
-        openai_api_key=os.environ["OPENAI_API_KEY"],
-    )
+    # llm = ChatOpenAI(
+    #     model_name="gpt-4o-mini",
+    #     temperature=0.5,
+    #     openai_api_key=os.environ["OPENAI_API_KEY"],
+    # )
     builder = build_multi_agent_issue_graph(llm, reviewer_tools, compile_graph=False)
     graph = build_multi_agent_issue_graph(llm, reviewer_tools, compile_graph=True)
     # with open("graph.dot", "w") as f:

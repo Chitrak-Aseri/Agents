@@ -111,6 +111,6 @@ def get_reviewer_agent(llm, tools):
         tools=tools,
         llm=llm,
         agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
-        # verbose=True,
+        verbose=True,
         handle_parsing_errors=True,
     )

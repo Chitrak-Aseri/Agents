@@ -47,11 +47,16 @@ def main():
         create_issue
     ]  # Just FYI; not actually used in your `generator_node`
 
+    # llm = ChatOpenAI(
+    #     model_name="deepseek-chat",
+    #     temperature=0.5,
+    #     openai_api_base="https://api.deepseek.com/v1",
+    #     openai_api_key=os.environ["DEEPSEEK_API_KEY"],
+    # )
     llm = ChatOpenAI(
-        model_name="deepseek-chat",
+        model_name="gpt-4o-mini",
         temperature=0.5,
-        openai_api_base="https://api.deepseek.com/v1",
-        openai_api_key=os.environ["DEEPSEEK_API_KEY"],
+        openai_api_key=os.environ["OPENAI_API_KEY"],
     )
     builder = build_multi_agent_issue_graph(llm, reviewer_tools, compile_graph=False)
     graph = build_multi_agent_issue_graph(llm, reviewer_tools, compile_graph=True)

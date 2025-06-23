@@ -4,7 +4,8 @@ from typing import Any, List, Optional, TypedDict
 from github import Github
 from IPython.display import Image, display
 from langgraph.graph import END, StateGraph
-
+from src.agents.suggestion_agent import generate_contextual_suggestion
+from src.tools.codebase_fetcher import get_codebase_as_dict, extract_file_path_from_body
 from src.agents.reviewer_agent import get_reviewer_agent
 from dotenv import load_dotenv
 load_dotenv()
@@ -102,31 +103,36 @@ def generator_node():
 
     return run
 
-def suggestion_node():
+def suggestion_node(llm):
+    from src.tools.codebase_fetcher import extract_file_path_from_body, get_codebase_as_dict
+    from src.agents.suggestion_agent import generate_contextual_suggestion
+
+    code_dict = get_codebase_as_dict("codebase")
+    print("✅ Loaded codebase dictionary with", len(code_dict), "files")
+
     def run(state: AgentState) -> AgentState:
-        print("💬 Suggestion node: commenting on generated issues...")
-        print("💬 [suggestion_node] RUNNING")
-        print("💬 State keys:", state.keys())
-        print("💬 issues_to_create_numbers:", state.get("issues_to_create_numbers"))
-        gh = Github(os.environ["GITHUB_TOKEN"], seconds_between_writes=1)
+        print("💬 Suggestion node with full LLM + source context")
+
+        gh = Github(os.environ["GITHUB_TOKEN"])
         repo = gh.get_repo(os.environ["GITHUB_REPO"])
+        numbers = state.get("issues_to_create_numbers", [])
+        issues = state.get("issues_to_create", [])
 
-        mock_comments = [
-            "🤖 Consider handling edge cases more thoroughly.",
-            "🧪 Add unit tests for this issue.",
-            "📦 Could this be modularized into smaller functions?",
-            "🧹 Remove any unused imports or variables."
-        ]
-
-        for num in state.get("issues_to_create_numbers", []):
-            issue = repo.get_issue(number=num)
-            for text in mock_comments:
-                issue.create_comment(text)
-                print(f"Commented on #{num}: \"{text}\"")
+        for issue_obj, issue_num in zip(issues, numbers):
+            issue = repo.get_issue(number=issue_num)
+            title = issue_obj.get("title", "")
+            body = issue_obj.get("body", "")
+            response = generate_contextual_suggestion(
+                llm,
+                code=code_dict,  # Limit to ~1200 chars for clarity
+                issue_body=body
+            )
+            issue.create_comment(response if isinstance(response, str) else response.content)
+            print(f"✅ Commented on #{issue_num} with LLM suggestion.")
 
         return state
-    return run
 
+    return run
 
 
 def should_create_issues(state: AgentState) -> str:
@@ -137,7 +143,7 @@ def build_multi_agent_issue_graph(llm, tools, compile_graph=True):
     graph = StateGraph(AgentState)
     graph.add_node("reviewer", reviewer_node(llm, tools))
     graph.add_node("generator", generator_node())
-    graph.add_node("suggestion", suggestion_node())
+    graph.add_node("suggestion", suggestion_node(llm))
 
     graph.set_entry_point("reviewer")
     graph.add_conditional_edges("reviewer", should_create_issues, {"create": "generator", "end": END})

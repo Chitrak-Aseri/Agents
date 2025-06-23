@@ -6,6 +6,7 @@ from langchain_core.tools import tool  # ✅ CORRECT
 
 load_dotenv()
 
+
 @tool
 def fetch_existing_issues(input: str = "") -> list:
     """Fetch all open issues from a GitHub repository.

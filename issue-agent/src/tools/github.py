@@ -1,6 +1,8 @@
-from langchain_core.tools import tool  # ✅ CORRECT
-from github import Github
 import os
+
+from github import Github
+from langchain_core.tools import tool  # ✅ CORRECT
+
 
 @tool
 def fetch_github_issues() -> str:

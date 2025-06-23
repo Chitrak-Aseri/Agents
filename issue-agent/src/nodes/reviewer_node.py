@@ -1,7 +1,9 @@
-from typing import List, Optional, Any, Dict
+from typing import Any, Dict, List, Optional
+
 from langchain_core.output_parsers import PydanticOutputParser
 from langchain_core.prompts import PromptTemplate
 from pydantic import BaseModel
+
 from src.utils.parser import summarize_sonar_metrics
 
 

@@ -1,0 +1,41 @@
+import random
+import math
+
+# def roll_dice(sides=6):
+#     return random.randint(1, sides)
+
+def factorial(n):
+    if n < 0:
+        raise ValueError("Factorial is undefined for negative numbers.")
+    if n == 0:
+        return 1
+    return n * factorial(n - 1)
+
+# def draw_card():
+#     ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace']
+#     suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
+    
+#     rank = random.choice(ranks)
+#     suit = random.choice(suits)
+    
+#     return f"{rank} of {suit}"
+
+# def calculate_pi(terms=1000):
+#     pi_estimate = 0
+#     for i in range(terms):
+#         pi_estimate += ((-1) ** i) / (2 * i + 1)
+#     return 4 * pi_estimate
+
+# def simulate_game():
+#     dice_roll = roll_dice()
+#     fact_result = factorial(dice_roll)
+#     card = draw_card()
+#     pi_value = calculate_pi()
+    
+#     print(f"Dice Roll: {dice_roll}")
+#     print(f"Factorial of {dice_roll}: {fact_result}")
+#     print(f"Drawn Card: {card}")
+#     print(f"Estimated Pi Value: {pi_value}")
+
+if __name__ == "__main__":
+    simulate_game()

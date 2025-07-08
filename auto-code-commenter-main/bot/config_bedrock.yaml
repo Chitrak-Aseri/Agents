@@ -1,0 +1,16 @@
+model:
+  provider:
+    type: bedrock
+  model_name: meta.llama3-70b-instruct-v1:0
+  region: us-east-1
+  credentials:
+    aws_access_key_id: ${AWS_ACCESS_KEY_ID}
+    aws_secret_access_key: ${AWS_SECRET_ACCESS_KEY}
+
+project:
+  include:
+    - ./src/game
+  file_types:
+    - .py
+    - .sql
+    - .ipynb

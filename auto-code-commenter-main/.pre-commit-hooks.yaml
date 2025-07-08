@@ -1,0 +1,10 @@
+# .pre-commit-hooks.yaml
+- id: auto-code-commenter
+  name: Auto Code Commenter
+  entry: bash -c 'PYTHONPATH=$(pwd) python app/cli.py --src src --config code-comment-config.yaml'
+  language: system
+  types: [python]
+  files: \.py$|\.ipynb$|\.sql$
+  env:
+    PYTHONPATH: .
+  

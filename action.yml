@@ -1,0 +1,59 @@
+# action.yml
+name: "Code Comment Bot"
+description: "A GitHub Action to auto-generate PRs with code comments using a Python-based bot"
+author: "Manav-Khandurie manavkhandurie@gmail.com"
+
+runs:
+  using: "docker"
+  image: "docker://manavkhandurie/auto-code-commenter:v1.4.0"
+  env:
+    API_KEY: ${{ inputs.api_key }}  # <-- 🔥 Add this
+    API_BASE: ${{ inputs.api_base }}
+    MODEL_NAME: ${{ inputs.model_name }}
+    PROVIDER: ${{ inputs.provider }}
+    SRC: ${{ inputs.src }}
+    REGION: ${{ inputs.region }}
+    AWS_ACCESS_KEY_ID: ${{ inputs.aws_access_key_id }}
+    AWS_SECRET_ACCESS_KEY: ${{ inputs.aws_secret_access_key }}
+  args:
+    - "--config=${{ inputs.config }}"
+    - "--src=${{ inputs.src }}"
+    - "--provider=${{ inputs.provider }}"
+    - "--model_name=${{ inputs.model_name }}"
+    - "--region=${{ inputs.region }}"
+    - "--api_key=${{ inputs.api_key }}"
+    - "--api_base=${{ inputs.api_base }}"
+    - "--aws_access_key_id=${{ inputs.aws_access_key_id }}"
+    - "--aws_secret_access_key=${{ inputs.aws_secret_access_key }}"
+
+inputs:
+  config:
+    description: "Path to the config YAML file"
+    required: false
+  src:
+    description: "source code directory to analyze"
+    default: "."
+    required: false
+  provider:
+    required: false
+    description: "LLM provider"
+  model_name:
+    required: false
+    description: "Model name"
+  region:
+    required: false
+    description: "AWS region (for bedrock)"
+  api_key:
+    required: false
+    description: "API key for OpenAI/DeepSeek"
+  api_base:
+    required: false
+    description: "API base URL for DeepSeek"
+  aws_access_key_id:
+    required: false
+  aws_secret_access_key:
+    required: false
+
+branding:
+  icon: "message-square"
+  color: "blue"
